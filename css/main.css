@@ -1849,7 +1849,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff91b5;
+  background: #ed1d49;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2982,4 +2982,13 @@ ul.breadcrumb li+li:last-child {
   .post-body {
     text-align: justify;
   }
+}
+body {
+  background: url("https://s1.ax1x.com/2018/12/19/FDVnkq.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.footer {
+  color: #111;
+  background-color: rgba(255,255,255,0.6);
 }
