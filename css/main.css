@@ -1849,7 +1849,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ed1d49;
+  background: #262fff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2984,11 +2984,16 @@ ul.breadcrumb li+li:last-child {
   }
 }
 body {
-  background: url("https://s1.ax1x.com/2018/12/19/FDVnkq.jpg");
+  background: url("https://s1.ax1x.com/2018/12/19/FDZWZ9.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  background-size: 100% auto;
 }
 .footer {
   color: #111;
-  background-color: rgba(255,255,255,0.6);
+  background-color: rgba(255,255,255,0.7);
+}
+.footer-inner {
+  padding-left: 0px;
 }

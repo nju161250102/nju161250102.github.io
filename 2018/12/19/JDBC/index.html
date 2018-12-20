@@ -57,16 +57,14 @@
 <link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-mine.png?v=6.6.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-mine.png?v=6.6.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+  <link rel="mask-icon" href="/images/favicon-128x128-mine.png?v=6.6.0" color="#222">
 
 
 
@@ -107,14 +105,14 @@
   <meta name="description" content="JDBC的使用方法以及相关数据库概念">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JDBC">
+<meta property="og:title" content="Java数据库连接 (Java DataBase Connectivity)">
 <meta property="og:url" content="https://nju161250102.github.io/2018/12/19/JDBC/index.html">
 <meta property="og:site_name" content="Qian&#39;s Blog">
 <meta property="og:description" content="JDBC的使用方法以及相关数据库概念">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-19T09:23:42.796Z">
+<meta property="og:updated_time" content="2018-12-20T02:43:15.775Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JDBC">
+<meta name="twitter:title" content="Java数据库连接 (Java DataBase Connectivity)">
 <meta name="twitter:description" content="JDBC的使用方法以及相关数据库概念">
 
 
@@ -132,7 +130,7 @@
   };
 </script>
 
-  <title>JDBC | Qian's Blog</title>
+  <title>Java数据库连接 (Java DataBase Connectivity) | Qian's Blog</title>
   
 
 
@@ -368,7 +366,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JDBC
+          <h1 class="post-title" itemprop="name headline">Java数据库连接 (Java DataBase Connectivity)
 
               
             
@@ -394,12 +392,24 @@
                 
               
 
-              <time title="创建时间：2018-12-19 16:24:07 / 修改时间：17:23:42" itemprop="dateCreated datePublished" datetime="2018-12-19T16:24:07+08:00">2018-12-19</time>
+              <time title="创建时间：2018-12-19 16:24:07" itemprop="dateCreated datePublished" datetime="2018-12-19T16:24:07+08:00">2018-12-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-20 10:43:15" itemprop="dateModified" datetime="2018-12-20T10:43:15+08:00">2018-12-20</time>
               
             
           </span>
@@ -452,8 +462,7 @@
       
 
       
-        <p>Java数据库连接 (Java DataBase Connectivity)</p>
-<h3 id="JDBC的作用"><a href="#JDBC的作用" class="headerlink" title="JDBC的作用"></a>JDBC的作用</h3><ul>
+        <h2 id="了解JDBC"><a href="#了解JDBC" class="headerlink" title="了解JDBC"></a>了解JDBC</h2><h3 id="JDBC的作用"><a href="#JDBC的作用" class="headerlink" title="JDBC的作用"></a>JDBC的作用</h3><ul>
 <li>开发人员只需了解一组API，就可以访问任何关系数据库 </li>
 <li>不必为不同的数据库重新编写代码 </li>
 <li>不必了解数据库供应商的特定API </li>
@@ -464,17 +473,15 @@
 <li>向数据库提交查询请求</li>
 <li>读取查询结果</li>
 <li>处理查询结果</li>
-<li>释放连接</li>
+<li>关闭数据库，释放连接</li>
 </ol>
-<h3 id="DriverManager机制"><a href="#DriverManager机制" class="headerlink" title="DriverManager机制"></a>DriverManager机制</h3><p>使用DriverManager、Driver和Connection连接到数据库上</p>
+<h2 id="建立数据库连接"><a href="#建立数据库连接" class="headerlink" title="建立数据库连接"></a>建立数据库连接</h2><h3 id="DriverManager机制"><a href="#DriverManager机制" class="headerlink" title="DriverManager机制"></a>DriverManager机制</h3><p>使用DriverManager、Driver和Connection连接到数据库上</p>
 <ol>
 <li><p>注册驱动程序</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(“JDBCDriverName”); <span class="comment">//隐式注册</span></span><br><span class="line">DriverManager.registerDriver (<span class="keyword">new</span> JDBCDriverName()); <span class="comment">//显式注册</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>建立数据库连接</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection con=DriverManager.getConnection(URL,username,password); <span class="comment">//按照注册顺序，找到第一个可以成功连接到给定URL的驱动程序，返回一个Connection对象</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用连接进行查询、插入、删除的操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Connection con = DriverManager.getConnection(URL,username,password); </span><br><span class="line"><span class="comment">//按照注册顺序，找到第一个可以成功连接到给定URL的驱动程序，返回一个Connection对象</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>DriverManager机制的弊端：</p>
@@ -484,18 +491,27 @@
 <li>用户的用户名、口令也包含在类中，丧失了安全性</li>
 </ul>
 <h3 id="DataSource机制"><a href="#DataSource机制" class="headerlink" title="DataSource机制"></a>DataSource机制</h3><ol>
+<li><p>配置数据源<br>在WebRoot/META-INF目录下（假如不存在则新建），创建一个context.xml文件。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"jdbc/name"</span> <span class="attr">auth</span>=<span class="string">"Container"</span> <span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">maxActive</span>=<span class="string">"50"</span> <span class="attr">maxIdle</span>=<span class="string">"30"</span> <span class="attr">maxWait</span>=<span class="string">"10000"</span> <span class="attr">logAbandoned</span>=<span class="string">"true"</span> </span></span><br><span class="line"><span class="tag">               <span class="attr">username</span>=<span class="string">"root"</span> <span class="attr">password</span>=<span class="string">""</span> <span class="attr">driverClassName</span>=<span class="string">"com.mysql.jdbc.Driver"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/name?characterEncoding=UTF8"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查询数据源对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Context ctx=<span class="keyword">new</span> InitialContext();</span><br><span class="line">DataSource ods=(DataSource) ctx.lookup(DataSourceJNDIName);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Context ctx = <span class="keyword">new</span> InitialContext();</span><br><span class="line">DataSource ds = (DataSource) ctx.lookup(<span class="string">"java:comp/env/jdbc/name"</span>); </span><br><span class="line"><span class="comment">// name与上一步配置一致</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>获取数据库连接(javax.sql.DataSource类的工厂方法)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ods.getConnection();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进行数据库操作（与DriverManager机制相同）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection con = ds.getConnection();</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Statement stmt=con.createStatement(); <span class="comment">//用于完成和数据库的交互</span></span><br><span class="line">stmt.execute(“任何有效的SQL查询语句”); <span class="comment">//执行SQL语句</span></span><br><span class="line">ResultSet rs=stmt.getResultSet(); <span class="comment">// 返回查询结果</span></span><br><span class="line"><span class="comment">//or</span></span><br><span class="line">ResultSet rs=stmt.executeQuery(“SQL查询语句”);</span><br></pre></td></tr></table></figure>
-<h4 id="ResultSet"><a href="#ResultSet" class="headerlink" title="ResultSet"></a>ResultSet</h4><p>拥有一个指向当前数据行的指针，开始，这个光标定位到<strong>第一个数据行之前的位置。</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">next()</span><br><span class="line"><span class="comment">//把光标移动到下一行，当ResultSet对象没有更多的数据行时， next()方法返回false</span></span><br><span class="line">getString(String ColumnName)</span><br><span class="line"><span class="comment">//读取Resultset对象当前行中指定列名的字符串值</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="完成查询后"><a href="#完成查询后" class="headerlink" title="完成查询后"></a>完成查询后</h4><p>调用close()方法依次释放ResultSet对象，Statement对象，Connection对象。</p>
+<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><h3 id="执行查询语句"><a href="#执行查询语句" class="headerlink" title="执行查询语句"></a>执行查询语句</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Statement stmt=con.createStatement(); <span class="comment">// 用于完成和数据库的交互</span></span><br><span class="line">stmt.execute(“任何有效的SQL查询语句”); <span class="comment">// 执行SQL语句</span></span><br><span class="line">ResultSet rs=stmt.getResultSet(); <span class="comment">// 返回查询结果</span></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">ResultSet rs=stmt.executeQuery(“SQL查询语句”);</span><br></pre></td></tr></table></figure>
+<h3 id="ResultSet"><a href="#ResultSet" class="headerlink" title="ResultSet"></a>ResultSet</h3><p>拥有一个指向当前数据行的指针，开始，这个光标定位到<strong>第一个数据行之前的位置</strong>。实际上查询的数据并不在ResultSet里面，依然是在数据库里，所以连接不能断开。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 常用方法</span></span><br><span class="line"><span class="comment">// 把光标移动到下一行，当ResultSet对象没有更多的数据行时， next()方法返回false</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">next</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="comment">// 读取Resultset对象当前行中指定列名的值</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getInt</span><span class="params">(String columnLabel)</span></span></span><br><span class="line"><span class="function">Date <span class="title">getDate</span><span class="params">(String columnLabel)</span></span></span><br><span class="line"><span class="function">String <span class="title">getString</span><span class="params">(String columnLabel)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 遍历结果集</span></span></span><br><span class="line"><span class="function"><span class="title">while</span> <span class="params">(rs.next()</span>) </span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="PreparedStatement"><a href="#PreparedStatement" class="headerlink" title="PreparedStatement"></a>PreparedStatement</h3><p>SQL语句被预编译并存储在PreparedStatement对象中。然后可以使用此对象多次高效地执行该语句.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用?作为占位符</span></span><br><span class="line">String sql = <span class="string">"insert into person(name,age,description)values(?,?,?)"</span>;</span><br><span class="line">PreparedStatement ps = conn.prepareStatement(sql);</span><br><span class="line"><span class="comment">// 设置占位符对应的值</span></span><br><span class="line">ps.setString(<span class="number">1</span>, p.getName());</span><br><span class="line">ps.setInt(<span class="number">2</span>, p.getAge());</span><br><span class="line">ps.setString(<span class="number">3</span>, p.getDescription());</span><br><span class="line"><span class="comment">// 执行</span></span><br><span class="line">ps.executeUpdate();</span><br></pre></td></tr></table></figure></p>
+<p>使用PreparedStatement的原因：</p>
+<ul>
+<li>代码的可读性和可维护性</li>
+<li>尽最大可能提高性能</li>
+<li>极大地提高了安全性（防止SQL注入）</li>
+</ul>
+<h3 id="完成查询后"><a href="#完成查询后" class="headerlink" title="完成查询后"></a>完成查询后</h3><p>调用close()方法依次释放ResultSet对象，Statement对象，Connection对象。需要try-catch语句。</p>
 
       
     </div>
@@ -627,8 +643,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">1</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
@@ -641,8 +655,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -707,7 +719,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC的作用"><span class="nav-number">1.</span> <span class="nav-text">JDBC的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC的使用"><span class="nav-number">2.</span> <span class="nav-text">JDBC的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DriverManager机制"><span class="nav-number">3.</span> <span class="nav-text">DriverManager机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DataSource机制"><span class="nav-number">4.</span> <span class="nav-text">DataSource机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库操作"><span class="nav-number">5.</span> <span class="nav-text">数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ResultSet"><span class="nav-number">5.1.</span> <span class="nav-text">ResultSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完成查询后"><span class="nav-number">5.2.</span> <span class="nav-text">完成查询后</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#了解JDBC"><span class="nav-number">1.</span> <span class="nav-text">了解JDBC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC的作用"><span class="nav-number">1.1.</span> <span class="nav-text">JDBC的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC的使用"><span class="nav-number">1.2.</span> <span class="nav-text">JDBC的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立数据库连接"><span class="nav-number">2.</span> <span class="nav-text">建立数据库连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DriverManager机制"><span class="nav-number">2.1.</span> <span class="nav-text">DriverManager机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DataSource机制"><span class="nav-number">2.2.</span> <span class="nav-text">DataSource机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库操作"><span class="nav-number">3.</span> <span class="nav-text">数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#执行查询语句"><span class="nav-number">3.1.</span> <span class="nav-text">执行查询语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ResultSet"><span class="nav-number">3.2.</span> <span class="nav-text">ResultSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PreparedStatement"><span class="nav-number">3.3.</span> <span class="nav-text">PreparedStatement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完成查询后"><span class="nav-number">3.4.</span> <span class="nav-text">完成查询后</span></a></li></ol></li></ol></div>
             
 
           </div>
