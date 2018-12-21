@@ -102,27 +102,25 @@
 
 
 
-  <meta name="description" content="简介Servlet用于扩展请求 - 响应编程模型的服务器功能。 尽管servlet可以响应任何类型的请求，但它们通常用于扩展Web服务器的应用程序。 对于此类应用程序，Java Servlet技术定义了专用于HTTP的servlet类.">
+  <meta name="description" content="HTTP 简介 HTTP协议（HyperText Transfer Protocol，超文本传输协议）基于TCP/IP通信协议来传递数据。 HTTP默认端口号为80，可修改。 HTTP是无连接的：每次连接只处理一个请求，处理结束服务器立即断开连接。 HTTP是无状态的：如果需要前面的数据需要重新传输。">
 <meta name="keywords" content="servlet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Servlet(1)——入门">
-<meta property="og:url" content="https://nju161250102.github.io/2018/12/20/Servlet-1/index.html">
+<meta property="og:title" content="Servlet(2)——HTTP请求与响应">
+<meta property="og:url" content="https://nju161250102.github.io/2018/12/21/Servlet-2/index.html">
 <meta property="og:site_name" content="Qian&#39;s Blog">
-<meta property="og:description" content="简介Servlet用于扩展请求 - 响应编程模型的服务器功能。 尽管servlet可以响应任何类型的请求，但它们通常用于扩展Web服务器的应用程序。 对于此类应用程序，Java Servlet技术定义了专用于HTTP的servlet类.">
+<meta property="og:description" content="HTTP 简介 HTTP协议（HyperText Transfer Protocol，超文本传输协议）基于TCP/IP通信协议来传递数据。 HTTP默认端口号为80，可修改。 HTTP是无连接的：每次连接只处理一个请求，处理结束服务器立即断开连接。 HTTP是无状态的：如果需要前面的数据需要重新传输。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://s1.ax1x.com/2018/12/11/FJO0YQ.png">
-<meta property="og:updated_time" content="2018-12-20T08:27:01.481Z">
+<meta property="og:updated_time" content="2018-12-21T06:12:28.151Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Servlet(1)——入门">
-<meta name="twitter:description" content="简介Servlet用于扩展请求 - 响应编程模型的服务器功能。 尽管servlet可以响应任何类型的请求，但它们通常用于扩展Web服务器的应用程序。 对于此类应用程序，Java Servlet技术定义了专用于HTTP的servlet类.">
-<meta name="twitter:image" content="https://s1.ax1x.com/2018/12/11/FJO0YQ.png">
+<meta name="twitter:title" content="Servlet(2)——HTTP请求与响应">
+<meta name="twitter:description" content="HTTP 简介 HTTP协议（HyperText Transfer Protocol，超文本传输协议）基于TCP/IP通信协议来传递数据。 HTTP默认端口号为80，可修改。 HTTP是无连接的：每次连接只处理一个请求，处理结束服务器立即断开连接。 HTTP是无状态的：如果需要前面的数据需要重新传输。">
 
 
 
 
 
 
-  <link rel="canonical" href="https://nju161250102.github.io/2018/12/20/Servlet-1/">
+  <link rel="canonical" href="https://nju161250102.github.io/2018/12/21/Servlet-2/">
 
 
 
@@ -132,7 +130,7 @@
   };
 </script>
 
-  <title>Servlet(1)——入门 | Qian's Blog</title>
+  <title>Servlet(2)——HTTP请求与响应 | Qian's Blog</title>
   
 
 
@@ -351,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nju161250102.github.io/2018/12/20/Servlet-1/">
+    <link itemprop="mainEntityOfPage" href="https://nju161250102.github.io/2018/12/21/Servlet-2/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qian">
@@ -368,7 +366,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Servlet(1)——入门
+          <h1 class="post-title" itemprop="name headline">Servlet(2)——HTTP请求与响应
 
               
             
@@ -394,7 +392,7 @@
                 
               
 
-              <time title="创建时间：2018-12-20 15:24:07 / 修改时间：16:27:01" itemprop="dateCreated datePublished" datetime="2018-12-20T15:24:07+08:00">2018-12-20</time>
+              <time title="创建时间：2018-12-21 10:53:42 / 修改时间：14:12:28" itemprop="dateCreated datePublished" datetime="2018-12-21T10:53:42+08:00">2018-12-21</time>
             
 
             
@@ -450,38 +448,97 @@
       
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Servlet用于扩展请求 - 响应编程模型的服务器功能。 尽管servlet可以响应任何类型的请求，但它们通常用于扩展Web服务器的应用程序。 对于此类应用程序，Java Servlet技术定义了专用于HTTP的servlet类.</p>
+        <h2 id="HTTP-简介"><a href="#HTTP-简介" class="headerlink" title="HTTP 简介"></a>HTTP 简介</h2><ul>
+<li>HTTP协议（HyperText Transfer Protocol，超文本传输协议）基于TCP/IP通信协议来传递数据。</li>
+<li>HTTP默认端口号为80，可修改。</li>
+<li>HTTP是无连接的：每次连接只处理一个请求，处理结束服务器立即断开连接。</li>
+<li>HTTP是无状态的：如果需要前面的数据需要重新传输。</li>
+</ul>
 <a id="more"></a>
-<h2 id="Java-Web-应用请求处理过程"><a href="#Java-Web-应用请求处理过程" class="headerlink" title="Java Web 应用请求处理过程"></a>Java Web 应用请求处理过程</h2><p><img src="https://s1.ax1x.com/2018/12/11/FJO0YQ.png" alt="示意图"></p>
-<ol>
-<li>客户端向服务器发送一个HTTP请求</li>
-<li>实现了Servlet和JSP技术的服务器将请求转换为一个HTTPServletRequest对象</li>
-<li>对象被传入一个能和JavaBean组件或数据库交互以获取动态内容的Web组件</li>
-<li>Web组件可以生成一个HTTPServletResponse对象或者传递给其他组件，最终有一个组件生成HTTPServletResponse对象</li>
-<li>Web服务器转换为一个HTTP响应并返回给客户端</li>
-</ol>
-<h2 id="生命周期-Life-Cycle"><a href="#生命周期-Life-Cycle" class="headerlink" title="生命周期 Life Cycle"></a>生命周期 Life Cycle</h2><p>servlet的生命周期由部署servlet的容器控制。 当请求被映射到servlet时，容器执行以下步骤：</p>
-<ol>
-<li>如果servlet的实例不存在，则为Web容器<ol>
-<li>加载servlet类。</li>
-<li>创建servlet类的实例。</li>
-<li>通过调用init()方法初始化servlet实例。</li>
-</ol>
-</li>
-<li>调用服务方法，传递请求和响应对象。 </li>
-<li>如果容器需要删除servlet，则通过调用servlet的destroy()方法来完成。</li>
-</ol>
-<h3 id="创建Servlet"><a href="#创建Servlet" class="headerlink" title="创建Servlet"></a>创建Servlet</h3><h4 id="WebServlet"><a href="#WebServlet" class="headerlink" title="@WebServlet"></a>@WebServlet</h4><p>使用@WebServlet注解的类必须扩展javax.servlet.http.HttpServlet类，使用urlPatterns或value属性指定一个URL模式。</p>
-<h4 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>servlet.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>绑定Servlet的完整类名、注册名称和映射的URL模式。</p>
-<h3 id="初始化Servlet"><a href="#初始化Servlet" class="headerlink" title="初始化Servlet"></a>初始化Servlet</h3><p>覆盖Servlet接口的init方法或指定@WebServlet注解的initParams属性，以自定义初始化过程。无法完成初始化过程的servlet应该抛出UnavailableException。</p>
-<h3 id="编写服务方法"><a href="#编写服务方法" class="headerlink" title="编写服务方法"></a>编写服务方法</h3><p>servlet提供的服务是在GenericServlet的方法中实现的，在doMethod方法（Get，Delete，Options，Post，Put或Trace）中，或者在任何其他实现Servlet接口协议特定方法中实现。方法的一般模式是从请求中提取信息，访问外部资源，然后根据信息填充响应。</p>
-<h3 id="填充响应"><a href="#填充响应" class="headerlink" title="填充响应"></a>填充响应</h3><ol>
-<li>从响应中检索输出流。</li>
-<li>填写响应标头。</li>
-<li>将任何正文内容写入输出流。</li>
-</ol>
-<h3 id="终止Servlet"><a href="#终止Servlet" class="headerlink" title="终止Servlet"></a>终止Servlet</h3><p>当容器确定删除servlet时（例如，当容器想要回收内存资源或需要关闭它时），容器会调用Servlet接口的destroy方法。 在此方法中，释放servlet正在使用的任何资源并保存任何持久状态。</p>
+<h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h2><ul>
+<li>请求头：请求方法（GET、POST、HEAD、PUT、DELETE、OPTIONS、TRACE、CONNECT）、URL和HTTP版本</li>
+<li>请求头部：键值对组成，每行一对，格式：键:值</li>
+<li>空行</li>
+<li>请求数据：POST方法使用</li>
+</ul>
+<h3 id="常用请求方法"><a href="#常用请求方法" class="headerlink" title="常用请求方法"></a>常用请求方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">GET</td>
+<td style="text-align:left">请求指定的页面信息</td>
+</tr>
+<tr>
+<td style="text-align:left">HEAD</td>
+<td style="text-align:left">类似于GET，响应中没有具体的内容，用于获取报头</td>
+</tr>
+<tr>
+<td style="text-align:left">POST</td>
+<td style="text-align:left">向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中</td>
+</tr>
+<tr>
+<td style="text-align:left">PUT</td>
+<td style="text-align:left">从客户端向服务器传送的数据取代指定的内容</td>
+</tr>
+<tr>
+<td style="text-align:left">DELETE</td>
+<td style="text-align:left">请求服务器删除指定的内容</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用HttpServletRequest方法"><a href="#常用HttpServletRequest方法" class="headerlink" title="常用HttpServletRequest方法"></a>常用HttpServletRequest方法</h3><ul>
+<li>Cookie[] getCookies()：包含客户端发送该请求的所有的 Cookie 对象</li>
+<li>Enumeration getXXXNames()：包含请求所有的XXX名称，Attribute-属性，Header-头部，Parameter-参数</li>
+<li>HttpSession getSession(boolean create)：返回与该请求关联的当前 HttpSession，或者如果没有当前会话，且create是true，则返回一个新的 session 会话</li>
+<li>String getMethod()：返回请求的 HTTP 方法的名称</li>
+<li>String getXXX(String name)：返回XXX的值，Header-头部，Parameter-参数</li>
+</ul>
+<h3 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h3><ul>
+<li>状态行</li>
+<li>消息报头</li>
+<li>响应正文</li>
+</ul>
+<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">分类</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1**</td>
+<td style="text-align:left">信息，服务器收到请求，需要请求者继续执行操作</td>
+</tr>
+<tr>
+<td style="text-align:left">2**</td>
+<td style="text-align:left">成功，操作被成功接收并处理</td>
+</tr>
+<tr>
+<td style="text-align:left">3**</td>
+<td style="text-align:left">重定向，需要进一步的操作以完成请求</td>
+</tr>
+<tr>
+<td style="text-align:left">4**</td>
+<td style="text-align:left">客户端错误，请求包含语法错误或无法完成请求</td>
+</tr>
+<tr>
+<td style="text-align:left">5**</td>
+<td style="text-align:left">服务器错误，服务器在处理请求的过程中发生了错误</td>
+</tr>
+</tbody>
+</table>
+<h4 id="常用HttpServletResponse方法"><a href="#常用HttpServletResponse方法" class="headerlink" title="常用HttpServletResponse方法"></a>常用HttpServletResponse方法</h4><ul>
+<li>addHeader(String name, String value)：添加一个带有给定的名称和值的响应报头</li>
+<li>sendError(int sc, String msg)：使用指定的状态发送错误响应到客户端</li>
+<li>sendRedirect(String location)：使用指定的重定向位置 URL 发送临时重定向响应到客户端。</li>
+<li>setStatus(int sc)：为该响应设置状态码</li>
+</ul>
 
       
     </div>
@@ -518,8 +575,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/19/JDBC/" rel="next" title="Java数据库连接 (Java DataBase Connectivity)">
-                <i class="fa fa-chevron-left"></i> Java数据库连接 (Java DataBase Connectivity)
+              <a href="/2018/12/20/Servlet-1/" rel="next" title="Servlet(1)——入门">
+                <i class="fa fa-chevron-left"></i> Servlet(1)——入门
               </a>
             
           </div>
@@ -527,10 +584,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/21/Servlet-2/" rel="prev" title="Servlet(2)——HTTP请求与响应">
-                Servlet(2)——HTTP请求与响应 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -695,7 +748,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-Web-应用请求处理过程"><span class="nav-number">2.</span> <span class="nav-text">Java Web 应用请求处理过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期-Life-Cycle"><span class="nav-number">3.</span> <span class="nav-text">生命周期 Life Cycle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Servlet"><span class="nav-number">3.1.</span> <span class="nav-text">创建Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WebServlet"><span class="nav-number">3.1.1.</span> <span class="nav-text">@WebServlet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#web-xml"><span class="nav-number">3.1.2.</span> <span class="nav-text">web.xml</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化Servlet"><span class="nav-number">3.2.</span> <span class="nav-text">初始化Servlet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写服务方法"><span class="nav-number">3.3.</span> <span class="nav-text">编写服务方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填充响应"><span class="nav-number">3.4.</span> <span class="nav-text">填充响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终止Servlet"><span class="nav-number">3.5.</span> <span class="nav-text">终止Servlet</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-简介"><span class="nav-number">1.</span> <span class="nav-text">HTTP 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP请求"><span class="nav-number">2.</span> <span class="nav-text">HTTP请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用请求方法"><span class="nav-number">2.1.</span> <span class="nav-text">常用请求方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用HttpServletRequest方法"><span class="nav-number">2.2.</span> <span class="nav-text">常用HttpServletRequest方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP响应"><span class="nav-number">2.3.</span> <span class="nav-text">HTTP响应</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#状态码"><span class="nav-number">2.3.1.</span> <span class="nav-text">状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用HttpServletResponse方法"><span class="nav-number">2.3.2.</span> <span class="nav-text">常用HttpServletResponse方法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
