@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Qian&#39;s Blog">
 <meta property="og:description" content="HTTP 简介 HTTP协议（HyperText Transfer Protocol，超文本传输协议）基于TCP/IP通信协议来传递数据。 HTTP默认端口号为80，可修改。 HTTP是无连接的：每次连接只处理一个请求，处理结束服务器立即断开连接。 HTTP是无状态的：如果需要前面的数据需要重新传输。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-21T06:12:28.151Z">
+<meta property="og:updated_time" content="2018-12-21T06:14:26.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Servlet(2)——HTTP请求与响应">
 <meta name="twitter:description" content="HTTP 简介 HTTP协议（HyperText Transfer Protocol，超文本传输协议）基于TCP/IP通信协议来传递数据。 HTTP默认端口号为80，可修改。 HTTP是无连接的：每次连接只处理一个请求，处理结束服务器立即断开连接。 HTTP是无状态的：如果需要前面的数据需要重新传输。">
@@ -392,7 +392,7 @@
                 
               
 
-              <time title="创建时间：2018-12-21 10:53:42 / 修改时间：14:12:28" itemprop="dateCreated datePublished" datetime="2018-12-21T10:53:42+08:00">2018-12-21</time>
+              <time title="创建时间：2018-12-21 10:53:42 / 修改时间：14:14:26" itemprop="dateCreated datePublished" datetime="2018-12-21T10:53:42+08:00">2018-12-21</time>
             
 
             
@@ -498,12 +498,12 @@
 <li>String getMethod()：返回请求的 HTTP 方法的名称</li>
 <li>String getXXX(String name)：返回XXX的值，Header-头部，Parameter-参数</li>
 </ul>
-<h3 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h3><ul>
+<h2 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h2><ul>
 <li>状态行</li>
 <li>消息报头</li>
 <li>响应正文</li>
 </ul>
-<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4><table>
+<h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><table>
 <thead>
 <tr>
 <th style="text-align:left">分类</th>
@@ -533,7 +533,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="常用HttpServletResponse方法"><a href="#常用HttpServletResponse方法" class="headerlink" title="常用HttpServletResponse方法"></a>常用HttpServletResponse方法</h4><ul>
+<h3 id="常用HttpServletResponse方法"><a href="#常用HttpServletResponse方法" class="headerlink" title="常用HttpServletResponse方法"></a>常用HttpServletResponse方法</h3><ul>
 <li>addHeader(String name, String value)：添加一个带有给定的名称和值的响应报头</li>
 <li>sendError(int sc, String msg)：使用指定的状态发送错误响应到客户端</li>
 <li>sendRedirect(String location)：使用指定的重定向位置 URL 发送临时重定向响应到客户端。</li>
@@ -584,6 +584,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/22/Next-settings/" rel="prev" title="Next主题个性化设置">
+                Next主题个性化设置 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -655,7 +659,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -670,7 +674,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -687,7 +693,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -748,7 +756,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-简介"><span class="nav-number">1.</span> <span class="nav-text">HTTP 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP请求"><span class="nav-number">2.</span> <span class="nav-text">HTTP请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用请求方法"><span class="nav-number">2.1.</span> <span class="nav-text">常用请求方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用HttpServletRequest方法"><span class="nav-number">2.2.</span> <span class="nav-text">常用HttpServletRequest方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP响应"><span class="nav-number">2.3.</span> <span class="nav-text">HTTP响应</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#状态码"><span class="nav-number">2.3.1.</span> <span class="nav-text">状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用HttpServletResponse方法"><span class="nav-number">2.3.2.</span> <span class="nav-text">常用HttpServletResponse方法</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-简介"><span class="nav-number">1.</span> <span class="nav-text">HTTP 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP请求"><span class="nav-number">2.</span> <span class="nav-text">HTTP请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用请求方法"><span class="nav-number">2.1.</span> <span class="nav-text">常用请求方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用HttpServletRequest方法"><span class="nav-number">2.2.</span> <span class="nav-text">常用HttpServletRequest方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP响应"><span class="nav-number">3.</span> <span class="nav-text">HTTP响应</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#状态码"><span class="nav-number">3.1.</span> <span class="nav-text">状态码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用HttpServletResponse方法"><span class="nav-number">3.2.</span> <span class="nav-text">常用HttpServletResponse方法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -770,7 +778,7 @@
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-qian"></i>
+    <i class="fa fa-cube"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Qian</span>
 
