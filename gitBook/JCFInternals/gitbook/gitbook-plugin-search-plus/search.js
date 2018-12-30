@@ -52,7 +52,7 @@ require([
 
     // Create an <li> element for each result
     res.results.forEach(function (item) {
-      var $li = $('<li>', {
+      var $li = $('</li><li>', {
         'class': 'search-results-item'
       })
 
@@ -250,3 +250,4 @@ require([
     }
   }, true)
 })
+</p></a></h3></li>

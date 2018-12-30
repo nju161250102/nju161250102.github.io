@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-mine.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-mine.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/favicon-128x128-mine.png?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","width":260,"display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="JSP技术提供了Java Servlet技术的所有动态功能，但提供了一种更自然的方法来创建静态内容。 主要特点如下：  基于文本的文档，描述如何处理请求和构造响应 用于访问服务器端对象的表达式语言 可以定义JSP语言扩展的机制">
+<meta name="keywords" content="servlet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet(5)—jsp技术">
+<meta property="og:url" content="https://nju161250102.github.io/2018/12/29/Servlet-5/index.html">
+<meta property="og:site_name" content="Qian&#39;s Blog">
+<meta property="og:description" content="JSP技术提供了Java Servlet技术的所有动态功能，但提供了一种更自然的方法来创建静态内容。 主要特点如下：  基于文本的文档，描述如何处理请求和构造响应 用于访问服务器端对象的表达式语言 可以定义JSP语言扩展的机制">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/12/22/FyZWN9.png">
+<meta property="og:updated_time" content="2018-12-30T01:40:05.311Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Servlet(5)—jsp技术">
+<meta name="twitter:description" content="JSP技术提供了Java Servlet技术的所有动态功能，但提供了一种更自然的方法来创建静态内容。 主要特点如下：  基于文本的文档，描述如何处理请求和构造响应 用于访问服务器端对象的表达式语言 可以定义JSP语言扩展的机制">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/12/22/FyZWN9.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://nju161250102.github.io/2018/12/29/Servlet-5/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Servlet(5)—jsp技术 | Qian's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Qian's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">未来不曾写下</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-gitbook">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/gitBook" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书籍</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nju161250102.github.io/2018/12/29/Servlet-5/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qian">
+      <meta itemprop="description" content="本站点诞生于无聊的大三生活">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Servlet(5)—jsp技术
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-29 23:52:05" itemprop="dateCreated datePublished" datetime="2018-12-29T23:52:05+08:00">2018-12-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-30 09:40:05" itemprop="dateModified" datetime="2018-12-30T09:40:05+08:00">2018-12-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java-Web/" itemprop="url" rel="index"><span itemprop="name">Java Web</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JSP技术提供了Java Servlet技术的所有动态功能，但提供了一种更自然的方法来创建静态内容。 主要特点如下：</p>
+<ul>
+<li>基于文本的文档，描述如何处理请求和构造响应</li>
+<li>用于访问服务器端对象的表达式语言</li>
+<li>可以定义JSP语言扩展的机制</li>
+</ul>
+<a id="more"></a>
+<p>JSP页面包含：</p>
+<ul>
+<li>静态数据：例如HTML，SVG，WML和XML</li>
+<li>动态内容：JSP元素</li>
+</ul>
+<h2 id="JSP的生命周期"><a href="#JSP的生命周期" class="headerlink" title="JSP的生命周期"></a>JSP的生命周期</h2><p>JSP页面将和servlet一样为请求提供服务，因此它的生命周期和其他特性由servlet技术决定。如果jsp对应的servlet要比jsp页面旧，web容器将会重新将jsp转化为servlet并且编译类。</p>
+<p>页面翻译和编译后，JSP页面的servlet（大部分）遵循servlet生命周期：</p>
+<ol>
+<li>如果JSP页面的servlet实例不存在，则容器：<br>a.  加载JSP页面的servlet类<br>b.  实例化servlet类的实例<br>c.  通过调用jspInit方法初始化servlet实例</li>
+<li>容器调用Service方法，传递请求和响应对象。</li>
+</ol>
+<p>如果容器需要删除JSP页面的servlet，它会调用Destroy方法。</p>
+<h2 id="JSP语法"><a href="#JSP语法" class="headerlink" title="JSP语法"></a>JSP语法</h2><p><img src="https://s1.ax1x.com/2018/12/22/FyZWN9.png" alt="标准语法和XML语法"></p>
+<h3 id="Directives"><a href="#Directives" class="headerlink" title="Directives"></a>Directives</h3><p>Directives指令用于控制Web容器如何转换和执行JSP页面。</p>
+<h4 id="session"><a href="#session" class="headerlink" title="session"></a>session</h4><p><code>&lt;%@ page session= &quot; true &quot; %&gt;</code><br>指定当前的JSP页面访问请求应包括在一个HTTP会话中，缺省选项” true “。相当于request.getSession(true)</p>
+<h4 id="import"><a href="#import" class="headerlink" title="import"></a>import</h4><p><code>&lt;%@ page import= &quot; package.* &quot; %&gt;</code><br>导入包中的所有类，下列包是隐含导入到JSP页面中的：</p>
+<ul>
+<li>java.lang.*</li>
+<li>javax.servlet.*</li>
+<li>javax.servlet.jsp.*</li>
+<li>javax.servlet.http.*</li>
+</ul>
+<h4 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h4><p><code>&lt;%@ page extends= &quot; com.xxx.JspCommon &quot; %&gt;</code><br>扩展其他类</p>
+<h4 id="contentType"><a href="#contentType" class="headerlink" title="contentType"></a>contentType</h4><p><code>&lt;%@ page contentType= &quot;text/html,charset=GBK&quot; %&gt;</code><br>设置页面的文本类型和字符编码</p>
+<h4 id="buffer"><a href="#buffer" class="headerlink" title="buffer"></a>buffer</h4><p><code>&lt;%@ page buffer=&quot;none|xxxkb&quot; %&gt;</code><br>设置页面的缓冲区大小。<br>较大的缓冲区允许在将任何内容实际发送回客户端之前写入更多内容，从而为JSP页面提供更多时间来设置适当的状态代码和标题或转发到另一个Web资源。 较小的缓冲区会降低服务器内存负载，并允许客户端更快地开始接收数据。</p>
+<h4 id="errorPage"><a href="#errorPage" class="headerlink" title="errorPage"></a>errorPage</h4><p><code>&lt;％@ page errorPage =“errorpage.jsp”％&gt;</code><br>指定Web容器应在发生异常时将控制转发到的错误页面。相当于在web.xml中设置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">error-page</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exception-type</span>&gt;</span>exceptionname<span class="tag">&lt;/ <span class="attr">exception-type</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">location</span>&gt;</span>/errorpagename<span class="tag">&lt;/ <span class="attr">location</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">error-page</span> &gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Include"><a href="#Include" class="headerlink" title="Include"></a>Include</h3><p><code>&lt;%@ include file=&quot;filename&quot; %&gt;</code><br>是将包含在另一个文件（静态内容或另一个JSP页面）中的文本插入到包含JSP页面中。用于实现JSP页面的模块化，复用导航条、标题栏、页脚等。对应servlet的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(<span class="string">"/banner.jsp"</span>); </span><br><span class="line"><span class="keyword">if</span>(dispatcher != <span class="keyword">null</span>) dispatcher.include(request,response);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Declarations"><a href="#Declarations" class="headerlink" title="Declarations"></a>Declarations</h3><p><code>&lt;%! scripting-language-declaration %&gt;</code><br>用于在页面的脚本语言中声明变量和方法，将成为servlet中的声明。声明的变量只在当前页面中可用。在声明中可以自定义初始化jspInit()和资源释放jspDestory()的过程：<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;%!</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspInit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		......</span><br><span class="line">	&#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Scriptlets"><a href="#Scriptlets" class="headerlink" title="Scriptlets"></a>Scriptlets</h3><p>用于包含脚本语言的代码片段，例如当脚本语言设置为java时，scriptlet将转换为Java语句片段，并插入到JSP页面的servlet的service方法中。JSP页面可以访问在scriptlet中创建的变量。<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">	scripting-language-statements</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Expression"><a href="#Expression" class="headerlink" title="Expression"></a>Expression</h3><p>计算表达式的值，转换成字符串并插入页面，不需要写分号。<br><code>&lt;％= scripting-language-expression％&gt;</code></p>
+<h3 id="隐式对象"><a href="#隐式对象" class="headerlink" title="隐式对象"></a>隐式对象</h3><p>隐式对象由Web容器创建。</p>
+<h4 id="out"><a href="#out" class="headerlink" title="out"></a>out</h4><ul>
+<li>javax.servlet.jsp.JspWriter类的实例</li>
+<li>调用print()/println()方法</li>
+<li>作用域是当前页面（page）</li>
+<li>采用缓存</li>
+</ul>
+<h4 id="request-response对象"><a href="#request-response对象" class="headerlink" title="request/response对象"></a>request/response对象</h4><ul>
+<li>javax.servlet.HttpServletRequest/ HttpServletResponse的实例</li>
+<li>使用request对象得到请求信息中的参数</li>
+<li>使用response对象发送重定向、修改HTTP头、指定URL重写</li>
+</ul>
+<h4 id="session对象"><a href="#session对象" class="headerlink" title="session对象"></a>session对象</h4><ul>
+<li>javax.servlet.http.HttpSession的实例</li>
+</ul>
+<h2 id="JSP-标准动作"><a href="#JSP-标准动作" class="headerlink" title="JSP 标准动作"></a>JSP 标准动作</h2><h3 id="lt-jsp-include-page-””-gt"><a href="#lt-jsp-include-page-””-gt" class="headerlink" title="&lt;jsp:include page=””&gt;"></a>&lt;jsp:include page=””&gt;</h3><p>使用RequestDispatcher在运行时把其他页面的内容加入输出流，而include指令是在编译时加入其他页面，被包含的资源可以是变量，例如<code>&lt;jsp:include page=&quot;%=dynamicRef%&quot;&gt;</code></p>
+<h3 id="lt-jsp-forward-page-””-gt"><a href="#lt-jsp-forward-page-””-gt" class="headerlink" title="&lt;jsp:forward page=””&gt;"></a>&lt;jsp:forward page=””&gt;</h3><p>把当前JSP请求转发到另一个资源上。HTTP重定向将请求信息发送回客户端，让客户端再进行资源转发，而forward标准动作只在服务器上完成。</p>
+<h3 id="lt-jsp-param-name-””-value-””-gt"><a href="#lt-jsp-param-name-””-value-””-gt" class="headerlink" title="&lt;jsp:param name=”” value=””&gt;"></a>&lt;jsp:param name=”” value=””&gt;</h3><p>使用include或forward动作时，向指定页面传递附加参数，并只在当前作用域生效。</p>
+<h3 id="lt-jsp-plugin-type-””-gt"><a href="#lt-jsp-plugin-type-””-gt" class="headerlink" title="&lt;jsp:plugin type=””&gt;"></a>&lt;jsp:plugin type=””&gt;</h3><p>包含一个JavaBean或者applet</p>
+<h3 id="Bean动作"><a href="#Bean动作" class="headerlink" title="Bean动作"></a>Bean动作</h3><ul>
+<li>&lt;jsp:useBean id=”beanName” class=”完全限定类名” scope=”scope”&gt;<ul>
+<li>JSP容器将自动创建/清理相应的JavaBean实例</li>
+</ul>
+</li>
+<li>&lt;jsp:setProperty name=”beanName” porperty=””&gt;<ul>
+<li>beanName 必须和useBean中的id一样</li>
+<li>JavaBean中必须有set方法</li>
+<li>value填入字符串内容，param填入请求参数名（相同可不填，可使用通配符）</li>
+</ul>
+</li>
+<li>&lt;jsp:getProperty name=”beanName” property=””&gt; 和set方法类似 </li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/servlet/" rel="tag"># servlet</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/25/SE-design-1/" rel="next" title="设计模式(1)—面向对象设计原则">
+                <i class="fa fa-chevron-left"></i> 设计模式(1)—面向对象设计原则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Qian">
+            
+              <p class="site-author-name" itemprop="name">Qian</p>
+              <p class="site-description motion-element" itemprop="description">本站点诞生于无聊的大三生活</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/nju161250102" title="GitHub &rarr; https://github.com/nju161250102" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://t.me/ObjectNotFound" title="Telegram &rarr; https://t.me/ObjectNotFound" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP的生命周期"><span class="nav-number">1.</span> <span class="nav-text">JSP的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP语法"><span class="nav-number">2.</span> <span class="nav-text">JSP语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Directives"><span class="nav-number">2.1.</span> <span class="nav-text">Directives</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#session"><span class="nav-number">2.1.1.</span> <span class="nav-text">session</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#import"><span class="nav-number">2.1.2.</span> <span class="nav-text">import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extends"><span class="nav-number">2.1.3.</span> <span class="nav-text">extends</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#contentType"><span class="nav-number">2.1.4.</span> <span class="nav-text">contentType</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffer"><span class="nav-number">2.1.5.</span> <span class="nav-text">buffer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#errorPage"><span class="nav-number">2.1.6.</span> <span class="nav-text">errorPage</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Include"><span class="nav-number">2.2.</span> <span class="nav-text">Include</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Declarations"><span class="nav-number">2.3.</span> <span class="nav-text">Declarations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scriptlets"><span class="nav-number">2.4.</span> <span class="nav-text">Scriptlets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Expression"><span class="nav-number">2.5.</span> <span class="nav-text">Expression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式对象"><span class="nav-number">2.6.</span> <span class="nav-text">隐式对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#out"><span class="nav-number">2.6.1.</span> <span class="nav-text">out</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#request-response对象"><span class="nav-number">2.6.2.</span> <span class="nav-text">request/response对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#session对象"><span class="nav-number">2.6.3.</span> <span class="nav-text">session对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-标准动作"><span class="nav-number">3.</span> <span class="nav-text">JSP 标准动作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-jsp-include-page-””-gt"><span class="nav-number">3.1.</span> <span class="nav-text">&lt;jsp:include page=””&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-jsp-forward-page-””-gt"><span class="nav-number">3.2.</span> <span class="nav-text">&lt;jsp:forward page=””&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-jsp-param-name-””-value-””-gt"><span class="nav-number">3.3.</span> <span class="nav-text">&lt;jsp:param name=”” value=””&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-jsp-plugin-type-””-gt"><span class="nav-number">3.4.</span> <span class="nav-text">&lt;jsp:plugin type=””&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean动作"><span class="nav-number">3.5.</span> <span class="nav-text">Bean动作</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-cube"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qian</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

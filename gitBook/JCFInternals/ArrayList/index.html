@@ -61,6 +61,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="构造方法.html" />
+    
     
     <link rel="prev" href="../OverView/迭代器.html" />
     
@@ -160,6 +162,38 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="构造方法.html">
+            
+                <a href="构造方法.html">
+            
+                    
+                    构造方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="方法剖析.html">
+            
+                <a href="方法剖析.html">
+            
+                    
+                    方法剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
 
@@ -208,9 +242,17 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x603B;&#x4F53;&#x4ECB;&#x7ECD;">&#x603B;&#x4F53;&#x4ECB;&#x7ECD;</h1>
-<p><em>ArrayList</em>&#x5B9E;&#x73B0;&#x4E86;<em>List</em>&#x63A5;&#x53E3;&#xFF0C;&#x662F;&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#xFF0C;&#x5373;&#x5143;&#x7D20;&#x5B58;&#x653E;&#x7684;&#x6570;&#x636E;&#x4E0E;&#x653E;&#x8FDB;&#x53BB;&#x7684;&#x987A;&#x5E8F;&#x76F8;&#x540C;&#xFF0C;&#x5141;&#x8BB8;&#x653E;&#x5165;<code>null</code>&#x5143;&#x7D20;&#xFF0C;&#x5E95;&#x5C42;&#x901A;&#x8FC7;<strong>&#x6570;&#x7EC4;&#x5B9E;&#x73B0;</strong>&#x3002;&#x9664;&#x8BE5;&#x7C7B;&#x672A;&#x5B9E;&#x73B0;&#x540C;&#x6B65;&#x5916;&#xFF0C;&#x5176;&#x4F59;&#x8DDF;<em>Vector</em>&#x5927;&#x81F4;&#x76F8;&#x540C;&#x3002;&#x6BCF;&#x4E2A;<em>ArrayList</em>&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5BB9;&#x91CF;&#xFF08;capacity&#xFF09;&#xFF0C;&#x8868;&#x793A;&#x5E95;&#x5C42;&#x6570;&#x7EC4;&#x7684;&#x5B9E;&#x9645;&#x5927;&#x5C0F;&#xFF0C;&#x5BB9;&#x5668;&#x5185;&#x5B58;&#x50A8;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;&#x4E0D;&#x80FD;&#x591A;&#x4E8E;&#x5F53;&#x524D;&#x5BB9;&#x91CF;&#x3002;&#x5F53;&#x5411;&#x5BB9;&#x5668;&#x4E2D;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x5BB9;&#x91CF;&#x4E0D;&#x8DB3;&#xFF0C;&#x5BB9;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x589E;&#x5927;&#x5E95;&#x5C42;&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x63D0;&#x8FC7;&#xFF0C;Java&#x6CDB;&#x578B;&#x53EA;&#x662F;&#x7F16;&#x8BD1;&#x5668;&#x63D0;&#x4F9B;&#x7684;&#x8BED;&#x6CD5;&#x7CD6;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x7684;&#x6570;&#x7EC4;&#x662F;&#x4E00;&#x4E2A;Object&#x6570;&#x7EC4;&#xFF0C;&#x4EE5;&#x4FBF;&#x80FD;&#x591F;&#x5BB9;&#x7EB3;&#x4EFB;&#x4F55;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x3002; </p>
+<h3 id="&#x5185;&#x90E8;&#x5B9E;&#x73B0;">&#x5185;&#x90E8;&#x5B9E;&#x73B0;</h3>
+<p><em>ArrayList</em> &#x5B9E;&#x73B0;&#x4E86; <em>List</em> &#x63A5;&#x53E3;&#xFF0C;&#x662F;&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#xFF0C;&#x5373;&#x5143;&#x7D20;&#x5B58;&#x653E;&#x7684;&#x6570;&#x636E;&#x4E0E;&#x653E;&#x8FDB;&#x53BB;&#x7684;&#x987A;&#x5E8F;&#x76F8;&#x540C;&#xFF0C;&#x5141;&#x8BB8;&#x653E;&#x5165;<code>null</code>&#x5143;&#x7D20;&#xFF0C;&#x5E95;&#x5C42;&#x901A;&#x8FC7;<strong>&#x6570;&#x7EC4;&#x5B9E;&#x73B0;</strong>&#x3002;&#x6BCF;&#x4E2A; <em>ArrayList</em> &#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5BB9;&#x91CF;&#xFF08;capacity&#xFF09;&#xFF0C;&#x8868;&#x793A;&#x5E95;&#x5C42;&#x6570;&#x7EC4;&#x7684;&#x5B9E;&#x9645;&#x5927;&#x5C0F;&#xFF0C;&#x5BB9;&#x5668;&#x5185;&#x5B58;&#x50A8;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;&#x4E0D;&#x80FD;&#x591A;&#x4E8E;&#x5F53;&#x524D;&#x5BB9;&#x91CF;&#x3002;&#x5F53;&#x5411;&#x5BB9;&#x5668;&#x4E2D;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x5BB9;&#x91CF;&#x4E0D;&#x8DB3;&#xFF0C;&#x5BB9;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x589E;&#x5927;&#x5E95;&#x5C42;&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;&#x3002;</p>
+<p>size(), isEmpty(), get(), set()&#x65B9;&#x6CD5;&#x5747;&#x80FD;&#x5728;&#x5E38;&#x6570;&#x65F6;&#x95F4;&#x5185;&#x5B8C;&#x6210;&#xFF0C;add()&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x95F4;&#x5F00;&#x9500;&#x8DDF;&#x63D2;&#x5165;&#x4F4D;&#x7F6E;&#x6709;&#x5173;&#xFF0C;addAll()&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x95F4;&#x5F00;&#x9500;&#x8DDF;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;&#x6210;&#x6B63;&#x6BD4;&#x3002;&#x5176;&#x4F59;&#x65B9;&#x6CD5;&#x5927;&#x90FD;&#x662F;&#x7EBF;&#x6027;&#x65F6;&#x95F4;&#x3002;</p>
+<h3 id="&#x591A;&#x7EBF;&#x7A0B;">&#x591A;&#x7EBF;&#x7A0B;</h3>
+<p>&#x8BE5;&#x7C7B;<strong>&#x672A;&#x5B9E;&#x73B0;&#x540C;&#x6B65;</strong>&#xFF0C;&#x5982;&#x679C;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x8BBF;&#x95EE; <em>ArrayList</em> &#x5B9E;&#x4F8B;&#xFF0C;&#x5E76;&#x4E14;&#x81F3;&#x5C11;&#x6709;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5728;&#x7ED3;&#x6784;&#x4E0A;&#x4FEE;&#x6539;&#x4E86;&#x5217;&#x8868;&#xFF0C;&#x5219;&#x5FC5;&#x987B;&#x5728;&#x5916;&#x90E8;&#x8FDB;&#x884C;&#x540C;&#x6B65;&#x3002;&#xFF08;&#x7ED3;&#x6784;&#x4FEE;&#x6539;&#x662F;&#x6307;&#x6DFB;&#x52A0;&#x6216;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x64CD;&#x4F5C;&#xFF09;</p>
+<pre><code class="lang-java">List list = Collections.synchronizedList(<span class="hljs-keyword">new</span> ArrayList(...));
+</code></pre>
+<h3 id="&#x8FED;&#x4EE3;&#x5668;">&#x8FED;&#x4EE3;&#x5668;</h3>
+<p>&#x8FED;&#x4EE3;&#x5668;&#x7531;<code>iterator</code>&#x548C;<code>listIterator</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x3002;&#x5982;&#x679C;&#x521B;&#x5EFA;&#x8FED;&#x4EE3;&#x5668;&#x4E4B;&#x540E;&#xFF0C;&#x672A;&#x901A;&#x8FC7;&#x8FED;&#x4EE3;&#x5668;&#x81EA;&#x5DF1;&#x7684;<code>remove</code>&#x6216;<code>add</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5BF9;&#x5217;&#x8868;&#x8FDB;&#x884C;&#x4E86;&#x7ED3;&#x6784;&#x4E0A;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x8FED;&#x4EE3;&#x5668;&#x5C06;&#x629B;&#x51FA;<code>ConcurrentModificationException</code>&#x3002;&#x8FED;&#x4EE3;&#x5668;&#x7684;&#x8FD9;&#x4E00;&#x7279;&#x6027;&#x5728;&#x5E76;&#x53D1;&#x4FEE;&#x6539;&#x65F6;&#x65E0;&#x6CD5;&#x5F97;&#x5230;&#x4FDD;&#x8BC1;&#x3002; </p>
 <footer class="footer"><div class="footer__container--normal" alt=""><div class="footer__description--normal"><p class="paragraph footer__author--normal">Qian<sup class="super">&#xAE;</sup></p><p class="paragraph footer__quote--normal">It&#x2019;s not a bug &#x2013; it&#x2019;s an undocumented feature.</p><div class="footer__main--normal"><p class="paragraph footer__main__paragraph--normal copyright" style="color: #666 !important;">Copyright &#xA9; Qian all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></p><p class="paragraph footer__main__paragraph--normal footer__modifyTime--normal" style="color: #666 !important;"><span style="color: #666 !important;">&#x4FEE;&#x6539;&#x4E8E;</span>
-2018-12-26 18:55:52
+2018-12-27 09:39:31
 </p></div></div></div><div class="box__issues"></div></footer>
                                 
                                 </section>
@@ -238,10 +280,14 @@
 
             
                 
-                <a href="../OverView/迭代器.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 迭代器">
+                <a href="../OverView/迭代器.html" class="navigation navigation-prev " aria-label="Previous page: 迭代器">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="构造方法.html" class="navigation navigation-next " aria-label="Next page: 构造方法">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -250,7 +296,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ArrayList","level":"1.3","depth":1,"previous":{"title":"迭代器","level":"1.2.2","depth":2,"path":"OverView/迭代器.md","ref":"OverView/迭代器.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-footer","-lunr","-search","-share","search-plus"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-footer":{"isShowIssues":false,"wisdom":"It’s not a bug – it’s an undocumented feature.","copyright":"Copyright &#169; Qian","styles (normal, symmetrical)":"normal","issueNum":"8","style":"normal","repo":"","isShowQRCode":false,"timeColor":"#666","utcOffset":"8","format":"yyyy-MM-dd hh:mm:ss","signature":"Qian","token":"","baseUri":"https://github.com/CarpenterLee/JCFInternals/","copyrightColor":"#666","description":"修改于"},"search-plus":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Java集合框架介绍","language":"zh-hans","gitbook":"*","description":"整理自CarpenterLee对于Java集合框架的介绍"},"file":{"path":"ArrayList/README.md","mtime":"2018-12-26T10:55:52.738Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-26T15:31:05.199Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ArrayList","level":"1.3","depth":1,"next":{"title":"构造方法","level":"1.3.1","depth":2,"path":"ArrayList/构造方法.md","ref":"ArrayList/构造方法.md","articles":[]},"previous":{"title":"迭代器","level":"1.2.2","depth":2,"path":"OverView/迭代器.md","ref":"OverView/迭代器.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-footer","-lunr","-search","-share","search-plus"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-footer":{"isShowIssues":false,"wisdom":"It’s not a bug – it’s an undocumented feature.","copyright":"Copyright &#169; Qian","styles (normal, symmetrical)":"normal","issueNum":"8","style":"normal","repo":"","isShowQRCode":false,"timeColor":"#666","utcOffset":"8","format":"yyyy-MM-dd hh:mm:ss","signature":"Qian","token":"","baseUri":"https://github.com/CarpenterLee/JCFInternals/","copyrightColor":"#666","description":"修改于"},"search-plus":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Java集合框架介绍","language":"zh-hans","gitbook":"*","description":"整理自CarpenterLee对于Java集合框架的介绍"},"file":{"path":"ArrayList/README.md","mtime":"2018-12-27T01:39:31.615Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-27T06:36:15.496Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
