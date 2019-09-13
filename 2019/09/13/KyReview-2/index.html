@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-mine.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-mine.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/favicon-128x128-mine.png?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","width":260,"display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="第一章 概述概念：  电路交换、报文交换、分组交换（数据报、虚电路） 特点（连通性和共享）、发展阶段、组成（边缘部分核心部分）、类别 速率、带宽、吞吐量、时延（发送/传播/处理/排队）、时延带宽积、往返时间、利用率">
+<meta property="og:type" content="article">
+<meta property="og:title" content="考研专业课复习提纲 - 计算机网络">
+<meta property="og:url" content="https://nju161250102.github.io/2019/09/13/KyReview-2/index.html">
+<meta property="og:site_name" content="Qian&#39;s Blog">
+<meta property="og:description" content="第一章 概述概念：  电路交换、报文交换、分组交换（数据报、虚电路） 特点（连通性和共享）、发展阶段、组成（边缘部分核心部分）、类别 速率、带宽、吞吐量、时延（发送/传播/处理/排队）、时延带宽积、往返时间、利用率">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-13T10:27:34.748Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="考研专业课复习提纲 - 计算机网络">
+<meta name="twitter:description" content="第一章 概述概念：  电路交换、报文交换、分组交换（数据报、虚电路） 特点（连通性和共享）、发展阶段、组成（边缘部分核心部分）、类别 速率、带宽、吞吐量、时延（发送/传播/处理/排队）、时延带宽积、往返时间、利用率">
+
+
+
+
+
+
+  <link rel="canonical" href="https://nju161250102.github.io/2019/09/13/KyReview-2/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>考研专业课复习提纲 - 计算机网络 | Qian's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Qian's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">未来不曾写下</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-gitbook">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/gitBook" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书籍</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nju161250102.github.io/2019/09/13/KyReview-2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qian">
+      <meta itemprop="description" content="本站点诞生于无聊的大三生活">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">考研专业课复习提纲 - 计算机网络
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-13 18:24:22 / 修改时间：18:27:34" itemprop="dateCreated datePublished" datetime="2019-09-13T18:24:22+08:00">2019-09-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/考研复习/" itemprop="url" rel="index"><span itemprop="name">考研复习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第一章-概述"><a href="#第一章-概述" class="headerlink" title="第一章 概述"></a>第一章 概述</h2><p>概念：</p>
+<ul>
+<li>电路交换、报文交换、分组交换（数据报、虚电路）</li>
+<li>特点（连通性和共享）、发展阶段、组成（边缘部分核心部分）、类别</li>
+<li>速率、带宽、吞吐量、时延（发送/传播/处理/排队）、时延带宽积、往返时间、利用率<a id="more"></a></li>
+<li>OSI七层协议、TCP/IP四层协议、五层协议</li>
+<li>实体、对等层、协议（语法语义同步）、协议数据单元、服务、协议栈</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>三种交换方式的优缺点；数据报与虚电路的区别</li>
+<li>计算分组交换时延：传播kd + 主机发送x/p <em> p/b +  路由发送(k-1)</em>(p/b)</li>
+<li>网络利用率与网络时延：D = 空闲时延D0 / (1 - 利用率U)</li>
+<li>包含往返时间RTT的发送时间计算</li>
+</ul>
+<h2 id="第二章-物理层"><a href="#第二章-物理层" class="headerlink" title="第二章 物理层"></a>第二章 物理层</h2><p>概念：</p>
+<ul>
+<li>物理层特性：机械、电气、功能、过程</li>
+<li><p>并行传输、串行传输</p>
+</li>
+<li><p>源系统（源点、发送器）、传输系统、目的系统（接收器、终点）</p>
+</li>
+<li>消息、数据、模拟信号、数字信号</li>
+<li>通信方式：单工通信、半双工通信、全双工通信</li>
+<li>常用编码方式：不归零制、归零制、曼彻斯特、差分曼彻斯特；自同步能力</li>
+<li>基带调制、带通调制（调幅、调频、调相）</li>
+<li>码间串扰、信噪比、波特率、采样频率至少是最大频率的2倍</li>
+<li>导引型传输媒体：双绞线（屏蔽/无屏蔽）、同轴电缆（抗干扰）、光缆（多模、单模）</li>
+<li>非导引型传输媒体：短波通信、微波通信、卫星通信</li>
+<li>信道复用：频分复用、时分复用、统计时分复用、波分复用、码分复用</li>
+<li>宽带技术：非对称数字用户线ADSL、光纤同轴混合网HFC、FTTx技术</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>奈氏准则<code>C=2*H*log2N</code>，N为一个码元所取得离散值个数（不同的物理状态）</li>
+<li>香农公式：计算波特率、比特率、最大数据传输速率、信噪比</li>
+<li>光纤的频率与带宽</li>
+<li>CDMA码片序列</li>
+</ul>
+<h2 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h2><p>概念：</p>
+<ul>
+<li>链路、数据链路、网络适配器、协议（规程）、帧、最大传送单元</li>
+<li>基本问题：封装成帧SOH/EOT、透明传输ESC、差错检测CRC</li>
+<li>PPP协议：帧格式字段意义、字节填充、零比特填充、工作状态</li>
+<li>局域网拓扑，以太网标准</li>
+<li>载波监听多点接入/碰撞检测CSMA/CD，传播时延，碰撞窗口，退避算法，强化碰撞，帧间最小间隔，信道利用率</li>
+<li>集线器、交换机、虚拟局域网、高速以太网</li>
+<li>MAC层：MAC帧格式（前同步码、帧开始定界符）、无效帧</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>奇偶校验、循环冗余检测CRC、海明码</li>
+<li>PPP协议格式、字节填充还原</li>
+<li>最迟经过2倍总线传播时延（最短帧发送时间恰为争用期）</li>
+<li>截断二进制指数退避（争用期、随机数重传、16次失败）</li>
+</ul>
+<p>补充：</p>
+<ul>
+<li>数据链路层为网络层提供的服务：<ul>
+<li>无确认的无连接服务：实时通信、误码率较低（以太网</li>
+<li>有确认的无连接服务：误码率较高</li>
+<li>有确认的面向连接服务：可靠性、实时性</li>
+</ul>
+</li>
+<li>后退N帧协议、重传协议</li>
+<li>1-坚持CSMA、非坚持CSMA、p-坚持CSMA</li>
+</ul>
+<p>题目：</p>
+<ul>
+<li>链路层可以纠正传输过程中产生的差错</li>
+<li>海明码“纠错”d位需要<code>2d+1</code>编码方案；“检错”d位需要<code>d+1</code>编码方案</li>
+<li>k比特位附加r比特位冗余信息，构成k+r码字，满足<code>2^r &gt;= k+r+1</code></li>
+<li>信道利用率 = 数据发送时延  / (传播时延 + 数据发送时延)</li>
+<li>最短帧长 = 争用期时间内发送的比特数（以太网最短帧长64B）</li>
+<li>直通交换机需要检查目的地址，即传送6B数据所需时间</li>
+<li>半双工交换机需要将总带宽除以2</li>
+</ul>
+<h2 id="第四章-网络层"><a href="#第四章-网络层" class="headerlink" title="第四章 网络层"></a>第四章 网络层</h2><p>概念：</p>
+<ul>
+<li>虚电路服务和数据报服务的对比</li>
+<li>IP、ICMP、IGMP、ARP</li>
+<li>网络的中间设备，间接交付，直接交付</li>
+<li>转发分组（目的网络地址 - 下一跳地址）<ul>
+<li>默认路由 0.0.0.0</li>
+<li>分组转发算法：直接交付-特定主机路由-到达网络路由-默认路由</li>
+</ul>
+</li>
+<li>二级IP地址：<ul>
+<li>五种分类（A B C D E）</li>
+<li>可指派的IP地址范围</li>
+<li>特殊的IP地址</li>
+</ul>
+</li>
+<li>划分子网：子网掩码，子网号位数不能是0 1 15 16</li>
+<li>无分类域间路由选择CIDR：<ul>
+<li>斜线记法，斜线后的数字是地址掩码中1的个数</li>
+<li>最长前缀匹配</li>
+</ul>
+</li>
+<li>IP数据报格式<ul>
+<li>版本 4位：4&amp;6</li>
+<li>首部长度 4位：单位是4B，因此最大长度60B</li>
+<li>区分服务 8位</li>
+<li>总长度 16位：单位是字节byte，首部和数据之和的长度</li>
+<li>标识 16位：超过最大传送单元（数据字段最大传送单元）MTU分片使用</li>
+<li>标志 3位：MF=1 后面还有分片；DF=1 不能分片</li>
+<li>片偏移 13位：单位是8B，因此分片长度一定是8B整数倍</li>
+<li>生存时间 8位：经过一个路由器减一</li>
+<li>协议 8位：常见协议字段</li>
+<li>首部检验和 16位：只检验首部，16位字一组反码相加取反码</li>
+<li>源地址 &amp; 目的地址：各32位</li>
+</ul>
+</li>
+<li>ARP协议：<ul>
+<li>高速缓存</li>
+<li>请求/响应过程</li>
+<li>生存时间</li>
+</ul>
+</li>
+<li>自治系统、内部网关协议、外部网关协议</li>
+<li>RIP路由协议<ul>
+<li>最多15跳，16表示不可达</li>
+<li>应用层协议，UDP传输</li>
+<li>算法、特点、优点、缺点</li>
+</ul>
+</li>
+<li>OSPF路由协议<ul>
+<li>网络层协议，直接使用IP数据报传输</li>
+<li>洪泛法，建立全网拓扑结构图，Dijkstra最短路径算法计算，区域划分</li>
+<li>五种分组类型</li>
+</ul>
+</li>
+<li>BGP路由协议<ul>
+<li>TCP连接传输数据</li>
+<li>BGP发言人</li>
+</ul>
+</li>
+<li>网际控制报文协议ICMP<ul>
+<li>四种差错：终点不可达、时间超过、参数问题、改变路由</li>
+<li>不发送差错报文的情况：自身、后续分片、多播地址、特殊地址</li>
+<li>应用：ping traceroute</li>
+</ul>
+</li>
+<li>虚拟专用网VPN<ul>
+<li>专用地址：10.0.0.0/8 172.16.0.0/12 192.168.0.0/16</li>
+</ul>
+</li>
+<li>网络地址转换NAT：</li>
+<li>IP多播：<ul>
+<li>D类地址，目的地址，不产生差错报文</li>
+<li>局域网硬件多播不需要复制分组，路由器转发给不同路径需要复制</li>
+<li>IGMP网际组管理协议</li>
+</ul>
+</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>辨别IP地址的类别、主机数、网络数</li>
+<li>ARP的使用过程</li>
+<li>数据报的分片（片偏移是八字节整数倍，首部最少20字节）</li>
+<li>路由表分组转发：默认路由，含子网掩码</li>
+<li>子网掩码的计算，最大聚合的地址块，地址匹配</li>
+<li>RIP距离向量算法</li>
+</ul>
+<p>补充：</p>
+<ul>
+<li>流量控制与拥塞控制的区别：发送端发送数据的能力/子网能够传送数据</li>
+</ul>
+<h2 id="第五章-运输层"><a href="#第五章-运输层" class="headerlink" title="第五章 运输层"></a>第五章 运输层</h2><p>概念：</p>
+<ul>
+<li>运输层协议：进程间的端到端通信，差错检测<ul>
+<li>面向连接的TCP：全双工可靠信道</li>
+<li>无连接的UDP：不可靠信道</li>
+<li>端口：16位，熟知端口号，登记端口号，客户端端口号</li>
+</ul>
+</li>
+<li>传输控制协议TCP：面向连接，可靠交付，全双工通信，面向字节流<ul>
+<li>套接字：IP地址:端口号</li>
+<li>停止等待协议：暂存，编号，超时重传，确认丢失，确认迟到</li>
+<li>连续ARQ协议：维持发送窗口，累积确认</li>
+<li>首部格式：<ul>
+<li>源端口-目的端口</li>
+<li>序号：本报文数据的第一个字节的编号</li>
+<li>确认号：期望收到对方下一个报文段的序号</li>
+<li>数据偏移：4B，最大值=15*4=60B</li>
+<li>保留（6位）</li>
+<li>6个控制位：URG-ACK-PSH-RST-SYN-FIN</li>
+<li>窗口：2B，接收方让发送方设置其发送窗口</li>
+<li>检验和：2B，包括伪首部和数据</li>
+<li>紧急指针：2B，URG=1有效</li>
+<li>选项：长度不定（MSS：数据部分的最大长度）</li>
+</ul>
+</li>
+<li>发送窗口：前沿，后沿，窗口满超时重传</li>
+<li>流量控制：发送窗口不超过接收窗口，设置持续计时器发送零窗口探测报文</li>
+<li>拥塞控制：<ul>
+<li>慢开始：每个传输轮次窗口加倍</li>
+<li>拥塞避免：到达慢开始门限后拥塞避免</li>
+<li>快重传：连续收到三个重复确认立即重传</li>
+<li>快恢复：直接降到拥塞门限</li>
+</ul>
+</li>
+<li>连接建立与连接释放</li>
+</ul>
+</li>
+<li>用户数据报协议UDP<ul>
+<li>无连接，尽最大努力交付，没有拥塞控制，面向报文</li>
+<li>首部：源端口-目的端口-长度-检验和（伪首部：源IP-目的IP-0-17-UDP长度）</li>
+<li>检验和计算：每2字节二进制反码和的反码（包括伪首部和数据）</li>
+</ul>
+</li>
+</ul>
+<p>记忆：</p>
+<ul>
+<li>首部格式各字段意义</li>
+<li>TCP连接建立与断开过程</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>最大吞吐量：1个RTT内将窗口的字节全部发送完毕，即有效数据/一个RTT时间</li>
+<li>RTT估计：<code>(1-a)\*oldRTTs + a\* newRTT</code></li>
+<li>计算UDP首部检验和</li>
+<li>分析首部字节</li>
+<li>计算信道利用率</li>
+<li>拥塞控制算法</li>
+</ul>
+<p>补充：</p>
+<ul>
+<li>根据报文段计算速率需要加上首部开销：TCP20B，IP20B，以太网26B</li>
+<li>释放连接最短时间：<code>1.5RTT</code></li>
+</ul>
+<h2 id="第六章-应用层"><a href="#第六章-应用层" class="headerlink" title="第六章 应用层"></a>第六章 应用层</h2><p>概念：</p>
+<ul>
+<li>域名系统DNS<ul>
+<li>联机分布式数据库，UDP</li>
+<li>域名：命名规范，域名层次结构与分类</li>
+<li>域名服务器：根域名服务器、顶级域名服务器、权限域名服务器、本地域名服务器</li>
+<li>域名解析过程：递归查询、迭代查询</li>
+</ul>
+</li>
+<li>文件传送协议FTP<ul>
+<li>指明类型与格式、具有访问权限</li>
+<li>控制连接-21、数据连接-20</li>
+</ul>
+</li>
+<li>远程终端协议TELNET</li>
+<li>万维网WWW<ul>
+<li>统一资源定位符URL：协议、主机、端口、路径</li>
+<li>超文本传送协议HTTP：<ul>
+<li>面向事务，TCP-80，无连接无状态</li>
+<li>非持续连接-1.0：两倍RTT</li>
+<li>持续连接-1.1：非流水线方式、流水线方式</li>
+<li>请求报文，响应报文，方法，状态码</li>
+<li>Cookie：保存在客户端</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>电子邮件<ul>
+<li>简单邮件传送协议SMTP：TCP-25</li>
+<li>邮局协议POP3：</li>
+<li>邮件格式：信封、内容（首部，主体）</li>
+<li>万维网电子邮件：HTTP协议传送至邮件服务器</li>
+<li>通用互联网邮件扩充MIME：base64编码</li>
+</ul>
+</li>
+<li>动态主机配置协议DHCP：客户UDP-68，服务器UDP-67</li>
+</ul>
+<p>记忆：</p>
+<ul>
+<li>域名解析过程</li>
+<li>ftp工作原理</li>
+<li>电子邮件发送过程</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>计算HTTP不同连接方式的响应时间</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/13/KyReview-1/" rel="next" title="考研专业课复习提纲 - 数据结构">
+                <i class="fa fa-chevron-left"></i> 考研专业课复习提纲 - 数据结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/13/KyReview-3/" rel="prev" title="考研专业课复习提纲 - 操作系统">
+                考研专业课复习提纲 - 操作系统 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Qian">
+            
+              <p class="site-author-name" itemprop="name">Qian</p>
+              <p class="site-description motion-element" itemprop="description">本站点诞生于无聊的大三生活</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/nju161250102" title="GitHub &rarr; https://github.com/nju161250102" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://t.me/ObjectNotFound" title="Telegram &rarr; https://t.me/ObjectNotFound" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-概述"><span class="nav-number">1.</span> <span class="nav-text">第一章 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-物理层"><span class="nav-number">2.</span> <span class="nav-text">第二章 物理层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-数据链路层"><span class="nav-number">3.</span> <span class="nav-text">第三章 数据链路层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-网络层"><span class="nav-number">4.</span> <span class="nav-text">第四章 网络层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-运输层"><span class="nav-number">5.</span> <span class="nav-text">第五章 运输层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-应用层"><span class="nav-number">6.</span> <span class="nav-text">第六章 应用层</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-cube"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qian</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

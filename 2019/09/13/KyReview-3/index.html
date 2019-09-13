@@ -102,25 +102,24 @@
 
 
 
-  <meta name="description" content="由于HTTP是无状态的，基于web的应用程序需要session存放用户与web服务器之间的会话。">
-<meta name="keywords" content="servlet">
+  <meta name="description" content="第一章 操作系统概论概念：  复用、虚拟、抽象（进程、虚存、文件） 并发、并行、共享、异步 发展（多道）与分类（批处理、分时、实时） 系统调用（程序接口）、库函数、命令解释程序Shell">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Servlet(3)—Session">
-<meta property="og:url" content="https://nju161250102.github.io/2018/12/23/Servlet-3/index.html">
+<meta property="og:title" content="考研专业课复习提纲 - 操作系统">
+<meta property="og:url" content="https://nju161250102.github.io/2019/09/13/KyReview-3/index.html">
 <meta property="og:site_name" content="Qian&#39;s Blog">
-<meta property="og:description" content="由于HTTP是无状态的，基于web的应用程序需要session存放用户与web服务器之间的会话。">
+<meta property="og:description" content="第一章 操作系统概论概念：  复用、虚拟、抽象（进程、虚存、文件） 并发、并行、共享、异步 发展（多道）与分类（批处理、分时、实时） 系统调用（程序接口）、库函数、命令解释程序Shell">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-25T08:19:58.749Z">
+<meta property="og:updated_time" content="2019-09-13T10:29:21.447Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Servlet(3)—Session">
-<meta name="twitter:description" content="由于HTTP是无状态的，基于web的应用程序需要session存放用户与web服务器之间的会话。">
+<meta name="twitter:title" content="考研专业课复习提纲 - 操作系统">
+<meta name="twitter:description" content="第一章 操作系统概论概念：  复用、虚拟、抽象（进程、虚存、文件） 并发、并行、共享、异步 发展（多道）与分类（批处理、分时、实时） 系统调用（程序接口）、库函数、命令解释程序Shell">
 
 
 
 
 
 
-  <link rel="canonical" href="https://nju161250102.github.io/2018/12/23/Servlet-3/">
+  <link rel="canonical" href="https://nju161250102.github.io/2019/09/13/KyReview-3/">
 
 
 
@@ -130,7 +129,7 @@
   };
 </script>
 
-  <title>Servlet(3)—Session | Qian's Blog</title>
+  <title>考研专业课复习提纲 - 操作系统 | Qian's Blog</title>
   
 
 
@@ -366,7 +365,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nju161250102.github.io/2018/12/23/Servlet-3/">
+    <link itemprop="mainEntityOfPage" href="https://nju161250102.github.io/2019/09/13/KyReview-3/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qian">
@@ -383,7 +382,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Servlet(3)—Session
+          <h1 class="post-title" itemprop="name headline">考研专业课复习提纲 - 操作系统
 
               
             
@@ -409,24 +408,12 @@
                 
               
 
-              <time title="创建时间：2018-12-23 14:35:33" itemprop="dateCreated datePublished" datetime="2018-12-23T14:35:33+08:00">2018-12-23</time>
+              <time title="创建时间：2019-09-13 18:27:46 / 修改时间：18:29:21" itemprop="dateCreated datePublished" datetime="2019-09-13T18:27:46+08:00">2019-09-13</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-25 16:19:58" itemprop="dateModified" datetime="2018-12-25T16:19:58+08:00">2018-12-25</time>
               
             
           </span>
@@ -443,7 +430,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java-Web/" itemprop="url" rel="index"><span itemprop="name">Java Web</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/考研复习/" itemprop="url" rel="index"><span itemprop="name">考研复习</span></a></span>
 
                 
                 
@@ -477,32 +464,131 @@
       
 
       
-        <blockquote>
-<p>由于HTTP是无状态的，基于web的应用程序需要session存放用户与web服务器之间的会话。</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="Session的工作原理"><a href="#Session的工作原理" class="headerlink" title="Session的工作原理"></a>Session的工作原理</h2><p>Session使用Cookie作为识别标志。服务器向客户端浏览器发送一个Cookie：名为JSESSIONID，值为该Session的id。Session依据该Cookie来识别是否为同一用户。</p>
-<blockquote>
-<p>JSESSIONID为识别标志默认值，可以在服务器的\<context sessioncookiename=" XXX ">设置。</context></p>
-</blockquote>
-<p>如果客户端浏览器将Cookie功能禁用，或者不支持Cookie，则使用URL重写方法。URL重写将该用户Session的id信息重写到URL地址中。服务器就能够解析重写后的URL获取Session的id。</p>
-<blockquote>
-<p>TOMCAT判断客户端浏览器是否支持Cookie的依据是请求中是否含有Cookie</p>
-</blockquote>
-<h2 id="Session的生命周期"><a href="#Session的生命周期" class="headerlink" title="Session的生命周期"></a>Session的生命周期</h2><h3 id="Session的创建"><a href="#Session的创建" class="headerlink" title="Session的创建"></a>Session的创建</h3><p>Sessinon在用户访问第一次访问服务器时创建，只有访问JSP、Servlet等程序时才会创建Session，访问静态资源时并不会创建Session，可以通过request.getSession(true)强制生成Session。</p>
-<h3 id="Session的销毁"><a href="#Session的销毁" class="headerlink" title="Session的销毁"></a>Session的销毁</h3><ul>
-<li><p>Session长时间没有活动，服务器会将session销毁。Tomcat默认的时间为30分钟，可以通过以下三种方式修改：</p>
+        <h2 id="第一章-操作系统概论"><a href="#第一章-操作系统概论" class="headerlink" title="第一章 操作系统概论"></a>第一章 操作系统概论</h2><p>概念：</p>
 <ul>
-<li>程序中设置：session.setMaxInactiveInterval()，设置单位为秒，设置为-1表示永不过期</li>
-<li>修改Tomcat配置：Context中设置defaultSessionTimeOut属性</li>
-<li>修改web.xml：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">session-config</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>30<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">session-config</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
+<li>复用、虚拟、抽象（进程、虚存、文件）</li>
+<li>并发、并行、共享、异步</li>
+<li>发展（多道）与分类（批处理、分时、实时）</li>
+<li>系统调用（程序接口）、库函数、命令解释程序Shell</li>
 </ul>
-</li>
-<li><p>调用Session的invalidate方法手动销毁</p>
-</li>
+<a id="more"></a>
+<p>记忆：</p>
+<ul>
+<li>系统调用的实现机制与执行流程</li>
 </ul>
-<h2 id="Session的使用"><a href="#Session的使用" class="headerlink" title="Session的使用"></a>Session的使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setAttribute</span><span class="params">(<span class="string">"xxx"</span>,xxx)</span></span>;	<span class="comment">// 储存到session中</span></span><br><span class="line"><span class="function">String <span class="title">getAttribute</span><span class="params">(<span class="string">"xxx"</span>,xxx)</span></span>;	<span class="comment">// 读取session中的值</span></span><br><span class="line"><span class="function">Enumeration <span class="title">getAttributeNames</span><span class="params">()</span></span>;<span class="comment">// 返回session中的属性名枚举类</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">removeAttribute</span><span class="params">(<span class="string">"xxx"</span>)</span></span>;	<span class="comment">// 移出session中的值</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">getCreationTime</span><span class="params">()</span></span>;		<span class="comment">// 返回session的创建时间</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">getLastAccessedTime</span><span class="params">()</span></span>;	<span class="comment">// 返回最近访问时间</span></span><br></pre></td></tr></table></figure>
+<p>方法：</p>
+<ul>
+<li>CPU利用率计算</li>
+<li>多道程序的时序关系</li>
+</ul>
+<h2 id="第二章-处理器管理"><a href="#第二章-处理器管理" class="headerlink" title="第二章 处理器管理"></a>第二章 处理器管理</h2><p>概念：</p>
+<ul>
+<li>特权指令、非特权指令、用户态（目态）、内核态（管态）、用户栈、核心栈</li>
+<li>程序状态字</li>
+<li>硬中断、外中断、内中断（异常）</li>
+<li>进程、三态模型、七态模型</li>
+<li>进程映像、进程控制块、进程上下文、进程队列</li>
+<li>多线程的引入、三种多线程的实现、线程调度</li>
+<li>处理器三级调度</li>
+</ul>
+<p>记忆：</p>
+<ul>
+<li>用户态与内核态之间的转换条件</li>
+<li>中断与异常的区别</li>
+<li>中断/异常的响应</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>计算调度性能指标</li>
+<li>七种低级调度算法</li>
+</ul>
+<h2 id="第三章-同步、通信与死锁"><a href="#第三章-同步、通信与死锁" class="headerlink" title="第三章 同步、通信与死锁"></a>第三章 同步、通信与死锁</h2><p>概念：</p>
+<ul>
+<li>并发执行、无关性、竞争与协作</li>
+<li>临界区、临界资源、关中断</li>
+<li>信号量、PV操作、原语</li>
+<li>管程</li>
+<li>信号通信、管道通信、共享内存、消息传递</li>
+<li>死锁</li>
+<li>安全状态、安全序列</li>
+</ul>
+<p>记忆：</p>
+<ul>
+<li>临界区管理的软件算法和硬件设施</li>
+<li>死锁产生条件、死锁防止、死锁避免、死锁检测、死锁解除（区分）</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>并发进程执行结果预测</li>
+<li>信号量值的含义</li>
+<li>信号量的经典问题</li>
+<li>银行家算法</li>
+<li>资源分配图与死锁检测算法</li>
+</ul>
+<h2 id="第四章-存储管理"><a href="#第四章-存储管理" class="headerlink" title="第四章 存储管理"></a>第四章 存储管理</h2><p>概念：</p>
+<ul>
+<li>编译、链接、装载、重定位</li>
+<li>固定存储分区管理、可变存储分区管理</li>
+<li>移动、对换、覆盖</li>
+<li>页面、页框、逻辑地址、页框表、页表、快表、反置页表</li>
+<li>段号、段内位移、段表</li>
+<li>虚拟存储器、时间局部性、空间局部性</li>
+<li>请求分页虚存管理、交换区、页面装入与分配策略、缺页中断率、抖动、Belady异常</li>
+<li>请求段页式存储管理</li>
+</ul>
+<p>记忆：</p>
+<ul>
+<li>分页/分段存储管理的地址转换过程</li>
+<li>虚存技术与对换技术的区别</li>
+<li>请求分页虚存地址转换过程</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>五种可变分区分配算法</li>
+<li>（多级）页表的地址转换和设计</li>
+<li>页表访问时间计算</li>
+<li>全局页面替换策略与局部页面替换策略</li>
+</ul>
+<h2 id="第五章-设备管理"><a href="#第五章-设备管理" class="headerlink" title="第五章 设备管理"></a>第五章 设备管理</h2><p>概念：</p>
+<ul>
+<li>字符设备、块设备、顺序存储设备、直接存取存储设备</li>
+<li>轮询、中断、DMA、通道、设备控制器</li>
+<li>I/O中断处理程序、I/O设备驱动程序、独立于设备的I/O软件、用户空间的I/O软件</li>
+<li>单缓冲、双缓冲、多缓冲</li>
+<li>盘面、磁道、柱面、扇区</li>
+<li>设备独立性、独占型设备-静态分配、共享设备-动态分配、虚拟设备-虚拟分配</li>
+<li>预输入程序、输入井、井管理程序、缓输出程序、输出井</li>
+<li>主设备号、次设备号</li>
+</ul>
+<p>记忆：</p>
+<ul>
+<li>中断、DMA、通道三种方式的执行过程</li>
+<li>两种读盘方式与三种写盘方式</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>缓冲技术的时间计算</li>
+<li>移动臂调度算法</li>
+</ul>
+<h2 id="第六章-文件管理"><a href="#第六章-文件管理" class="headerlink" title="第六章 文件管理"></a>第六章 文件管理</h2><p>概念：</p>
+<ul>
+<li>文件类型、管理属性、文件存取方法、文件控制块、层次目录结构</li>
+<li>流式文件、记录式文件</li>
+<li>顺序文件、连接文件、索引文件、直接文件</li>
+<li>超级块、索引节点区、数据区</li>
+<li>静态共享、动态共享、符号链接共享</li>
+<li>位示图、空闲区表、空闲块链、空闲块列表、成组空闲块链</li>
+</ul>
+<p>记忆：</p>
+<ul>
+<li>文件目录检索过程</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>多重索引结构相关计算</li>
+<li>文件块构成</li>
+</ul>
+
       
     </div>
 
@@ -523,12 +609,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/servlet/" rel="tag"># servlet</a>
-          
-        </div>
-      
 
       
       
@@ -538,8 +618,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/22/Next-settings/" rel="next" title="Next主题个性化设置">
-                <i class="fa fa-chevron-left"></i> Next主题个性化设置
+              <a href="/2019/09/13/KyReview-2/" rel="next" title="考研专业课复习提纲 - 计算机网络">
+                <i class="fa fa-chevron-left"></i> 考研专业课复习提纲 - 计算机网络
               </a>
             
           </div>
@@ -547,10 +627,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/24/Servlet-4/" rel="prev" title="Servlet(4)—过滤器 Filter">
-                Servlet(4)—过滤器 Filter <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -725,7 +801,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Session的工作原理"><span class="nav-number">1.</span> <span class="nav-text">Session的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session的生命周期"><span class="nav-number">2.</span> <span class="nav-text">Session的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Session的创建"><span class="nav-number">2.1.</span> <span class="nav-text">Session的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session的销毁"><span class="nav-number">2.2.</span> <span class="nav-text">Session的销毁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session的使用"><span class="nav-number">3.</span> <span class="nav-text">Session的使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-操作系统概论"><span class="nav-number">1.</span> <span class="nav-text">第一章 操作系统概论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-处理器管理"><span class="nav-number">2.</span> <span class="nav-text">第二章 处理器管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-同步、通信与死锁"><span class="nav-number">3.</span> <span class="nav-text">第三章 同步、通信与死锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-存储管理"><span class="nav-number">4.</span> <span class="nav-text">第四章 存储管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-设备管理"><span class="nav-number">5.</span> <span class="nav-text">第五章 设备管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-文件管理"><span class="nav-number">6.</span> <span class="nav-text">第六章 文件管理</span></a></li></ol></div>
             
 
           </div>
