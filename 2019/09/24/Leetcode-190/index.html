@@ -102,24 +102,25 @@
 
 
 
-  <meta name="description" content="第一章 操作系统概论概念：  复用、虚拟、抽象（进程、虚存、文件） 并发、并行、共享、异步 发展（多道）与分类（批处理、分时、实时） 系统调用（程序接口）、库函数、命令解释程序Shell">
+  <meta name="description" content="题目描述 Reverse bits of a given 32 bits unsigned integer.  将一个给出的32位无符号整数的比特位反转。 解答12345678910111213141516# @param n, an integer# @return an integerdef reverseBits(self, n):    result = 0    num = 0    #">
+<meta name="keywords" content="位运算,分治">
 <meta property="og:type" content="article">
-<meta property="og:title" content="考研专业课复习提纲 - 操作系统">
-<meta property="og:url" content="https://nju161250102.github.io/2019/09/13/KyReview-3/index.html">
+<meta property="og:title" content="190. Reverse Bits">
+<meta property="og:url" content="https://nju161250102.github.io/2019/09/24/Leetcode-190/index.html">
 <meta property="og:site_name" content="Qian&#39;s Blog">
-<meta property="og:description" content="第一章 操作系统概论概念：  复用、虚拟、抽象（进程、虚存、文件） 并发、并行、共享、异步 发展（多道）与分类（批处理、分时、实时） 系统调用（程序接口）、库函数、命令解释程序Shell">
+<meta property="og:description" content="题目描述 Reverse bits of a given 32 bits unsigned integer.  将一个给出的32位无符号整数的比特位反转。 解答12345678910111213141516# @param n, an integer# @return an integerdef reverseBits(self, n):    result = 0    num = 0    #">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-13T10:29:21.447Z">
+<meta property="og:updated_time" content="2019-09-24T04:00:55.282Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="考研专业课复习提纲 - 操作系统">
-<meta name="twitter:description" content="第一章 操作系统概论概念：  复用、虚拟、抽象（进程、虚存、文件） 并发、并行、共享、异步 发展（多道）与分类（批处理、分时、实时） 系统调用（程序接口）、库函数、命令解释程序Shell">
+<meta name="twitter:title" content="190. Reverse Bits">
+<meta name="twitter:description" content="题目描述 Reverse bits of a given 32 bits unsigned integer.  将一个给出的32位无符号整数的比特位反转。 解答12345678910111213141516# @param n, an integer# @return an integerdef reverseBits(self, n):    result = 0    num = 0    #">
 
 
 
 
 
 
-  <link rel="canonical" href="https://nju161250102.github.io/2019/09/13/KyReview-3/">
+  <link rel="canonical" href="https://nju161250102.github.io/2019/09/24/Leetcode-190/">
 
 
 
@@ -129,7 +130,7 @@
   };
 </script>
 
-  <title>考研专业课复习提纲 - 操作系统 | Qian's Blog</title>
+  <title>190. Reverse Bits | Qian's Blog</title>
   
 
 
@@ -365,7 +366,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nju161250102.github.io/2019/09/13/KyReview-3/">
+    <link itemprop="mainEntityOfPage" href="https://nju161250102.github.io/2019/09/24/Leetcode-190/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qian">
@@ -382,7 +383,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">考研专业课复习提纲 - 操作系统
+          <h1 class="post-title" itemprop="name headline">190. Reverse Bits
 
               
             
@@ -408,13 +409,9 @@
                 
               
 
-              <time title="创建时间：2019-09-13 18:27:46 / 修改时间：18:29:21" itemprop="dateCreated datePublished" datetime="2019-09-13T18:27:46+08:00">2019-09-13</time>
+              <time title="创建时间：2019-09-24 12:00:55" itemprop="dateCreated datePublished" datetime="2019-09-24T12:00:55+08:00">2019-09-24</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -430,7 +427,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/考研复习/" itemprop="url" rel="index"><span itemprop="name">考研复习</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
 
                 
                 
@@ -464,130 +461,13 @@
       
 
       
-        <h2 id="第一章-操作系统概论"><a href="#第一章-操作系统概论" class="headerlink" title="第一章 操作系统概论"></a>第一章 操作系统概论</h2><p>概念：</p>
-<ul>
-<li>复用、虚拟、抽象（进程、虚存、文件）</li>
-<li>并发、并行、共享、异步</li>
-<li>发展（多道）与分类（批处理、分时、实时）</li>
-<li>系统调用（程序接口）、库函数、命令解释程序Shell</li>
-</ul>
-<a id="more"></a>
-<p>记忆：</p>
-<ul>
-<li>系统调用的实现机制与执行流程</li>
-</ul>
-<p>方法：</p>
-<ul>
-<li>CPU利用率计算</li>
-<li>多道程序的时序关系</li>
-</ul>
-<h2 id="第二章-处理器管理"><a href="#第二章-处理器管理" class="headerlink" title="第二章 处理器管理"></a>第二章 处理器管理</h2><p>概念：</p>
-<ul>
-<li>特权指令、非特权指令、用户态（目态）、内核态（管态）、用户栈、核心栈</li>
-<li>程序状态字</li>
-<li>硬中断、外中断、内中断（异常）</li>
-<li>进程、三态模型、七态模型</li>
-<li>进程映像、进程控制块、进程上下文、进程队列</li>
-<li>多线程的引入、三种多线程的实现、线程调度</li>
-<li>处理器三级调度</li>
-</ul>
-<p>记忆：</p>
-<ul>
-<li>用户态与内核态之间的转换条件</li>
-<li>中断与异常的区别</li>
-<li>中断/异常的响应</li>
-</ul>
-<p>方法：</p>
-<ul>
-<li>计算调度性能指标</li>
-<li>七种低级调度算法</li>
-</ul>
-<h2 id="第三章-同步、通信与死锁"><a href="#第三章-同步、通信与死锁" class="headerlink" title="第三章 同步、通信与死锁"></a>第三章 同步、通信与死锁</h2><p>概念：</p>
-<ul>
-<li>并发执行、无关性、竞争与协作</li>
-<li>临界区、临界资源、关中断</li>
-<li>信号量、PV操作、原语</li>
-<li>管程</li>
-<li>信号通信、管道通信、共享内存、消息传递</li>
-<li>死锁</li>
-<li>安全状态、安全序列</li>
-</ul>
-<p>记忆：</p>
-<ul>
-<li>临界区管理的软件算法和硬件设施</li>
-<li>死锁产生条件、死锁防止、死锁避免、死锁检测、死锁解除（区分）</li>
-</ul>
-<p>方法：</p>
-<ul>
-<li>并发进程执行结果预测</li>
-<li>信号量值的含义</li>
-<li>信号量的经典问题</li>
-<li>银行家算法</li>
-<li>资源分配图与死锁检测算法</li>
-</ul>
-<h2 id="第四章-存储管理"><a href="#第四章-存储管理" class="headerlink" title="第四章 存储管理"></a>第四章 存储管理</h2><p>概念：</p>
-<ul>
-<li>编译、链接、装载、重定位</li>
-<li>固定存储分区管理、可变存储分区管理</li>
-<li>移动、对换、覆盖</li>
-<li>页面、页框、逻辑地址、页框表、页表、快表、反置页表</li>
-<li>段号、段内位移、段表</li>
-<li>虚拟存储器、时间局部性、空间局部性</li>
-<li>请求分页虚存管理、交换区、页面装入与分配策略、缺页中断率、抖动、Belady异常</li>
-<li>请求段页式存储管理</li>
-</ul>
-<p>记忆：</p>
-<ul>
-<li>分页/分段存储管理的地址转换过程</li>
-<li>虚存技术与对换技术的区别</li>
-<li>请求分页虚存地址转换过程</li>
-</ul>
-<p>方法：</p>
-<ul>
-<li>五种可变分区分配算法</li>
-<li>（多级）页表的地址转换和设计</li>
-<li>页表访问时间计算</li>
-<li>全局页面替换策略与局部页面替换策略</li>
-</ul>
-<h2 id="第五章-设备管理"><a href="#第五章-设备管理" class="headerlink" title="第五章 设备管理"></a>第五章 设备管理</h2><p>概念：</p>
-<ul>
-<li>字符设备、块设备、顺序存储设备、直接存取存储设备</li>
-<li>轮询、中断、DMA、通道、设备控制器</li>
-<li>I/O中断处理程序、I/O设备驱动程序、独立于设备的I/O软件、用户空间的I/O软件</li>
-<li>单缓冲、双缓冲、多缓冲</li>
-<li>盘面、磁道、柱面、扇区</li>
-<li>设备独立性、独占型设备-静态分配、共享设备-动态分配、虚拟设备-虚拟分配</li>
-<li>预输入程序、输入井、井管理程序、缓输出程序、输出井</li>
-<li>主设备号、次设备号</li>
-</ul>
-<p>记忆：</p>
-<ul>
-<li>中断、DMA、通道三种方式的执行过程</li>
-<li>两种读盘方式与三种写盘方式</li>
-</ul>
-<p>方法：</p>
-<ul>
-<li>缓冲技术的时间计算</li>
-<li>移动臂调度算法</li>
-</ul>
-<h2 id="第六章-文件管理"><a href="#第六章-文件管理" class="headerlink" title="第六章 文件管理"></a>第六章 文件管理</h2><p>概念：</p>
-<ul>
-<li>文件类型、管理属性、文件存取方法、文件控制块、层次目录结构</li>
-<li>流式文件、记录式文件</li>
-<li>顺序文件、连接文件、索引文件、直接文件</li>
-<li>超级块、索引节点区、数据区</li>
-<li>静态共享、动态共享、符号链接共享</li>
-<li>位示图、空闲区表、空闲块链、空闲块列表、成组空闲块链</li>
-</ul>
-<p>记忆：</p>
-<ul>
-<li>文件目录检索过程</li>
-</ul>
-<p>方法：</p>
-<ul>
-<li>多重索引结构相关计算</li>
-<li>文件块构成</li>
-</ul>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><blockquote>
+<p>Reverse bits of a given 32 bits unsigned integer.</p>
+</blockquote>
+<p>将一个给出的32位无符号整数的比特位反转。</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># @param n, an integer</span></span><br><span class="line"><span class="comment"># @return an integer</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverseBits</span><span class="params">(self, n)</span>:</span></span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    num = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 模2取余法并构造结果</span></span><br><span class="line">    <span class="keyword">while</span> n != <span class="number">0</span>:</span><br><span class="line">        m = n % <span class="number">2</span></span><br><span class="line">        n = (n - m) / <span class="number">2</span></span><br><span class="line">        result = result * <span class="number">2</span> + m</span><br><span class="line">        num += <span class="number">1</span></span><br><span class="line">    <span class="comment"># 补足到32位</span></span><br><span class="line">    <span class="keyword">while</span> num &lt; <span class="number">32</span>:</span><br><span class="line">        result = result * <span class="number">2</span></span><br><span class="line">        num += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<h2 id="其他解答"><a href="#其他解答" class="headerlink" title="其他解答"></a>其他解答</h2><h3 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h3><p>类似于快排，例如对于八位字符串有：abcdefgh -&gt; efghabcd -&gt; ghefcdab -&gt; hgfedcba</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverseBits</span><span class="params">(self, n)</span>:</span></span><br><span class="line">    <span class="comment"># For python, there is no 32bit int, so we need to force it 32 bits.</span></span><br><span class="line">    n = (n &gt;&gt; <span class="number">16</span>) | (n &lt;&lt; <span class="number">16</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line">    n = ((n &amp; <span class="number">0xff00ff00</span>) &gt;&gt; <span class="number">8</span>) | ((n &amp; <span class="number">0x00ff00ff</span>) &lt;&lt; <span class="number">8</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line">    n = ((n &amp; <span class="number">0xf0f0f0f0</span>) &gt;&gt; <span class="number">4</span>) | ((n &amp; <span class="number">0x0f0f0f0f</span>) &lt;&lt; <span class="number">4</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line">    n = ((n &amp; <span class="number">0xcccccccc</span>) &gt;&gt; <span class="number">2</span>) | ((n &amp; <span class="number">0x33333333</span>) &lt;&lt; <span class="number">2</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line">    n = ((n &amp; <span class="number">0xaaaaaaaa</span>) &gt;&gt; <span class="number">1</span>) | ((n &amp; <span class="number">0x55555555</span>) &lt;&lt; <span class="number">1</span>) &amp; <span class="number">0xffffffff</span></span><br><span class="line">    <span class="keyword">return</span> n</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -609,6 +489,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/位运算/" rel="tag"># 位运算</a>
+          
+            <a href="/tags/分治/" rel="tag"># 分治</a>
+          
+        </div>
+      
 
       
       
@@ -618,8 +506,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/13/KyReview-2/" rel="next" title="考研专业课复习提纲 - 计算机网络">
-                <i class="fa fa-chevron-left"></i> 考研专业课复习提纲 - 计算机网络
+              <a href="/2019/09/13/KyReview-3/" rel="next" title="考研专业课复习提纲 - 操作系统">
+                <i class="fa fa-chevron-left"></i> 考研专业课复习提纲 - 操作系统
               </a>
             
           </div>
@@ -627,10 +515,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/24/Leetcode-190/" rel="prev" title="190. Reverse Bits">
-                190. Reverse Bits <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -813,7 +697,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-操作系统概论"><span class="nav-number">1.</span> <span class="nav-text">第一章 操作系统概论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-处理器管理"><span class="nav-number">2.</span> <span class="nav-text">第二章 处理器管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-同步、通信与死锁"><span class="nav-number">3.</span> <span class="nav-text">第三章 同步、通信与死锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-存储管理"><span class="nav-number">4.</span> <span class="nav-text">第四章 存储管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-设备管理"><span class="nav-number">5.</span> <span class="nav-text">第五章 设备管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-文件管理"><span class="nav-number">6.</span> <span class="nav-text">第六章 文件管理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解答"><span class="nav-number">2.</span> <span class="nav-text">解答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他解答"><span class="nav-number">3.</span> <span class="nav-text">其他解答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分治法"><span class="nav-number">3.1.</span> <span class="nav-text">分治法</span></a></li></ol></li></ol></div>
             
 
           </div>
