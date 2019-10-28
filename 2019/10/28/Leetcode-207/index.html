@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="由于HTTP是无状态的，基于web的应用程序需要session存放用户与web服务器之间的会话。">
-<meta name="keywords" content="servlet">
+  <meta name="description" content="题目描述There are a total of n courses you have to take, labeled from 0 to n-1. Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a p">
+<meta name="keywords" content="有向无环图">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Servlet(3)—Session">
-<meta property="og:url" content="https://nju161250102.github.io/2018/12/23/Servlet-3/index.html">
+<meta property="og:title" content="207. Course Schedule">
+<meta property="og:url" content="https://nju161250102.github.io/2019/10/28/Leetcode-207/index.html">
 <meta property="og:site_name" content="Qian&#39;s Blog">
-<meta property="og:description" content="由于HTTP是无状态的，基于web的应用程序需要session存放用户与web服务器之间的会话。">
+<meta property="og:description" content="题目描述There are a total of n courses you have to take, labeled from 0 to n-1. Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a p">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-25T08:19:58.749Z">
+<meta property="og:updated_time" content="2019-10-28T06:47:20.292Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Servlet(3)—Session">
-<meta name="twitter:description" content="由于HTTP是无状态的，基于web的应用程序需要session存放用户与web服务器之间的会话。">
+<meta name="twitter:title" content="207. Course Schedule">
+<meta name="twitter:description" content="题目描述There are a total of n courses you have to take, labeled from 0 to n-1. Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a p">
 
 
 
 
 
 
-  <link rel="canonical" href="https://nju161250102.github.io/2018/12/23/Servlet-3/">
+  <link rel="canonical" href="https://nju161250102.github.io/2019/10/28/Leetcode-207/">
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>Servlet(3)—Session | Qian's Blog</title>
+  <title>207. Course Schedule | Qian's Blog</title>
   
 
 
@@ -366,7 +366,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://nju161250102.github.io/2018/12/23/Servlet-3/">
+    <link itemprop="mainEntityOfPage" href="https://nju161250102.github.io/2019/10/28/Leetcode-207/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qian">
@@ -383,7 +383,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Servlet(3)—Session
+          <h1 class="post-title" itemprop="name headline">207. Course Schedule
 
               
             
@@ -409,25 +409,9 @@
                 
               
 
-              <time title="创建时间：2018-12-23 14:35:33" itemprop="dateCreated datePublished" datetime="2018-12-23T14:35:33+08:00">2018-12-23</time>
+              <time title="创建时间：2019-10-28 14:47:20" itemprop="dateCreated datePublished" datetime="2019-10-28T14:47:20+08:00">2019-10-28</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-25 16:19:58" itemprop="dateModified" datetime="2018-12-25T16:19:58+08:00">2018-12-25</time>
-              
             
           </span>
 
@@ -443,7 +427,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java-Web/" itemprop="url" rel="index"><span itemprop="name">Java Web</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
 
                 
                 
@@ -477,32 +461,19 @@
       
 
       
-        <blockquote>
-<p>由于HTTP是无状态的，基于web的应用程序需要session存放用户与web服务器之间的会话。</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="Session的工作原理"><a href="#Session的工作原理" class="headerlink" title="Session的工作原理"></a>Session的工作原理</h2><p>Session使用Cookie作为识别标志。服务器向客户端浏览器发送一个Cookie：名为JSESSIONID，值为该Session的id。Session依据该Cookie来识别是否为同一用户。</p>
-<blockquote>
-<p>JSESSIONID为识别标志默认值，可以在服务器的\<context sessioncookiename=" XXX ">设置。</context></p>
-</blockquote>
-<p>如果客户端浏览器将Cookie功能禁用，或者不支持Cookie，则使用URL重写方法。URL重写将该用户Session的id信息重写到URL地址中。服务器就能够解析重写后的URL获取Session的id。</p>
-<blockquote>
-<p>TOMCAT判断客户端浏览器是否支持Cookie的依据是请求中是否含有Cookie</p>
-</blockquote>
-<h2 id="Session的生命周期"><a href="#Session的生命周期" class="headerlink" title="Session的生命周期"></a>Session的生命周期</h2><h3 id="Session的创建"><a href="#Session的创建" class="headerlink" title="Session的创建"></a>Session的创建</h3><p>Sessinon在用户访问第一次访问服务器时创建，只有访问JSP、Servlet等程序时才会创建Session，访问静态资源时并不会创建Session，可以通过request.getSession(true)强制生成Session。</p>
-<h3 id="Session的销毁"><a href="#Session的销毁" class="headerlink" title="Session的销毁"></a>Session的销毁</h3><ul>
-<li><p>Session长时间没有活动，服务器会将session销毁。Tomcat默认的时间为30分钟，可以通过以下三种方式修改：</p>
-<ul>
-<li>程序中设置：session.setMaxInactiveInterval()，设置单位为秒，设置为-1表示永不过期</li>
-<li>修改Tomcat配置：Context中设置defaultSessionTimeOut属性</li>
-<li>修改web.xml：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">session-config</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>30<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">session-config</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>调用Session的invalidate方法手动销毁</p>
-</li>
-</ul>
-<h2 id="Session的使用"><a href="#Session的使用" class="headerlink" title="Session的使用"></a>Session的使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setAttribute</span><span class="params">(<span class="string">"xxx"</span>,xxx)</span></span>;	<span class="comment">// 储存到session中</span></span><br><span class="line"><span class="function">String <span class="title">getAttribute</span><span class="params">(<span class="string">"xxx"</span>,xxx)</span></span>;	<span class="comment">// 读取session中的值</span></span><br><span class="line"><span class="function">Enumeration <span class="title">getAttributeNames</span><span class="params">()</span></span>;<span class="comment">// 返回session中的属性名枚举类</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">removeAttribute</span><span class="params">(<span class="string">"xxx"</span>)</span></span>;	<span class="comment">// 移出session中的值</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">getCreationTime</span><span class="params">()</span></span>;		<span class="comment">// 返回session的创建时间</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">getLastAccessedTime</span><span class="params">()</span></span>;	<span class="comment">// 返回最近访问时间</span></span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>There are a total of <em>n</em> courses you have to take, labeled from <code>0</code> to <code>n-1</code>.</p>
+<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: <code>[0,1]</code></p>
+<p>Given the total number of courses and a list of prerequisite <strong>pairs</strong>, is it possible for you to finish all courses?<br><a id="more"></a></p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>课程的先后顺序可以看做一个有向图，如果课程可以全部修完，说明有向图中没有环，因此转化成有向图中环路的判断问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canFinish</span><span class="params">(self, numCourses, prerequisites)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type numCourses: int</span></span><br><span class="line"><span class="string">        :type prerequisites: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(prerequisites) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="comment"># 保存顶点的相邻顶点</span></span><br><span class="line">        graph = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(numCourses)]</span><br><span class="line">        <span class="comment"># 保存每个顶点的入度</span></span><br><span class="line">        degree = [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(numCourses)]</span><br><span class="line">        q = []</span><br><span class="line">        <span class="keyword">for</span> edge <span class="keyword">in</span> prerequisites:</span><br><span class="line">            graph[edge[<span class="number">1</span>]].append(edge[<span class="number">0</span>])</span><br><span class="line">            degree[edge[<span class="number">0</span>]] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(degree)):</span><br><span class="line">            <span class="keyword">if</span> degree[i] == <span class="number">0</span>:</span><br><span class="line">                q.append(i)</span><br><span class="line">        <span class="comment"># 从队列中取出入度为0的顶点</span></span><br><span class="line">        <span class="keyword">while</span> len(q) &gt; <span class="number">0</span>:</span><br><span class="line">            course = q.pop()</span><br><span class="line">            <span class="comment"># 将其相邻顶点的入度减1</span></span><br><span class="line">            <span class="keyword">for</span> node <span class="keyword">in</span> graph[course]:</span><br><span class="line">                degree[node] -= <span class="number">1</span></span><br><span class="line">                <span class="comment"># 如果减为0则加入队列</span></span><br><span class="line">                <span class="keyword">if</span> degree[node] == <span class="number">0</span>:</span><br><span class="line">                    q.append(node)</span><br><span class="line">        <span class="comment"># 如果有入度不为0的顶点则有环存在</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(degree)):</span><br><span class="line">            <span class="keyword">if</span> degree[i] != <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h2 id="补充：有向图中环的判断"><a href="#补充：有向图中环的判断" class="headerlink" title="补充：有向图中环的判断"></a>补充：有向图中环的判断</h2><h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>DFS中出现后向边，即存在某一顶点被第二次访问到，则有回路出现。</p>
+<p>对每个节点分为三种状态，白、灰、黑。开始时所有节点都是白色，当开始访问某个节点时该节点变为灰色，当该节点的所有邻接点都访问完，该节点颜色变为黑色。那么我们的算法则为：<strong>如果遍历的过程中发现某个节点有一条边指向颜色为灰的节点，那么存在环。</strong> </p>
+<h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><ol>
+<li>算图中所有点的入度，把入度为0的点加入栈</li>
+<li>如果栈非空：取出栈顶顶点a，输出该顶点值，删除该顶点并从图中删除所有以a为起始点的边，如果删除的边的另一个顶点入度为0，则把它入栈</li>
+<li>如果图中还存在顶点，则表示图中存在环；否则输出的顶点就是一个拓扑排序序列</li>
+</ol>
+
       
     </div>
 
@@ -525,7 +496,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/servlet/" rel="tag"># servlet</a>
+            <a href="/tags/有向无环图/" rel="tag"># 有向无环图</a>
           
         </div>
       
@@ -538,8 +509,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/22/Next-settings/" rel="next" title="Next主题个性化设置">
-                <i class="fa fa-chevron-left"></i> Next主题个性化设置
+              <a href="/2019/10/28/Leetcode-164/" rel="next" title="164. Maximum Gap">
+                <i class="fa fa-chevron-left"></i> 164. Maximum Gap
               </a>
             
           </div>
@@ -547,10 +518,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/24/Servlet-4/" rel="prev" title="Servlet(4)—过滤器 Filter">
-                Servlet(4)—过滤器 Filter <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -739,7 +706,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Session的工作原理"><span class="nav-number">1.</span> <span class="nav-text">Session的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session的生命周期"><span class="nav-number">2.</span> <span class="nav-text">Session的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Session的创建"><span class="nav-number">2.1.</span> <span class="nav-text">Session的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session的销毁"><span class="nav-number">2.2.</span> <span class="nav-text">Session的销毁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session的使用"><span class="nav-number">3.</span> <span class="nav-text">Session的使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解答"><span class="nav-number">2.</span> <span class="nav-text">解答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充：有向图中环的判断"><span class="nav-number">3.</span> <span class="nav-text">补充：有向图中环的判断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DFS"><span class="nav-number">3.1.</span> <span class="nav-text">DFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拓扑排序"><span class="nav-number">3.2.</span> <span class="nav-text">拓扑排序</span></a></li></ol></li></ol></div>
             
 
           </div>
