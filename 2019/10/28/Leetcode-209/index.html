@@ -102,18 +102,18 @@
 
 
 
-  <meta name="description" content="题目描述Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s. If there isn’t one, return 0 instead. 和大于给定值s的连续子数组的最小长度 解答连续">
+  <meta name="description" content="题目描述Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s. If there isn’t one, return 0 instead. 和大于给定值s的连续子数组的最小长度">
 <meta name="keywords" content="双指针">
 <meta property="og:type" content="article">
 <meta property="og:title" content="209. Minimum Size Subarray Sum">
 <meta property="og:url" content="https://nju161250102.github.io/2019/10/28/Leetcode-209/index.html">
 <meta property="og:site_name" content="Qian&#39;s Blog">
-<meta property="og:description" content="题目描述Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s. If there isn’t one, return 0 instead. 和大于给定值s的连续子数组的最小长度 解答连续">
+<meta property="og:description" content="题目描述Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s. If there isn’t one, return 0 instead. 和大于给定值s的连续子数组的最小长度">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-28T08:13:35.595Z">
+<meta property="og:updated_time" content="2019-10-28T08:16:06.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="209. Minimum Size Subarray Sum">
-<meta name="twitter:description" content="题目描述Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s. If there isn’t one, return 0 instead. 和大于给定值s的连续子数组的最小长度 解答连续">
+<meta name="twitter:description" content="题目描述Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s. If there isn’t one, return 0 instead. 和大于给定值s的连续子数组的最小长度">
 
 
 
@@ -409,7 +409,7 @@
                 
               
 
-              <time title="创建时间：2019-10-28 16:03:04 / 修改时间：16:13:35" itemprop="dateCreated datePublished" datetime="2019-10-28T16:03:04+08:00">2019-10-28</time>
+              <time title="创建时间：2019-10-28 16:03:04 / 修改时间：16:16:06" itemprop="dateCreated datePublished" datetime="2019-10-28T16:03:04+08:00">2019-10-28</time>
             
 
             
@@ -467,6 +467,7 @@
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given an array of <strong>n</strong> positive integers and a positive integer <strong>s</strong>, find the minimal length of a <strong>contiguous</strong> subarray of which the sum ≥ <strong>s</strong>. If there isn’t one, return 0 instead.</p>
 <p>和大于给定值<code>s</code>的连续子数组的最小长度</p>
+<a id="more"></a>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>连续的子数组，所以考虑使用双指针解决问题。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minSubArrayLen</span><span class="params">(self, s, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: int</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 左右两个游标</span></span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        r = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 记录最短长度</span></span><br><span class="line">        length = len(nums) + <span class="number">1</span></span><br><span class="line">        sum_ = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> r &lt; len(nums):</span><br><span class="line">            sum_ += nums[r]</span><br><span class="line">            r += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> sum_ &gt;= s:</span><br><span class="line">                <span class="comment"># 新增元素大于左侧元素时，左侧游标右移</span></span><br><span class="line">                <span class="keyword">if</span> nums[r<span class="number">-1</span>] &gt;= nums[l]:</span><br><span class="line">                    <span class="keyword">while</span> sum_ &gt;= s:</span><br><span class="line">                        sum_ -= nums[l]</span><br><span class="line">                        l += <span class="number">1</span></span><br><span class="line">                    l -= <span class="number">1</span></span><br><span class="line">                    sum_ += nums[l]</span><br><span class="line">                length = min(length, r-l)</span><br><span class="line">        <span class="keyword">return</span> length <span class="keyword">if</span> length &lt;= len(nums) <span class="keyword">else</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
       
